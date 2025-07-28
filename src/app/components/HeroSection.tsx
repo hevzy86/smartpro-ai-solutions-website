@@ -18,7 +18,7 @@ export default function HeroSection() {
       </p>
       {/* CTA Button */}
       <a
-        href="#services"
+        href="#book-call"
         className="inline-block bg-gradient-to-r from-blue-500 via-purple-500 to-fuchsia-500 hover:from-fuchsia-500 hover:to-blue-500 text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition border-2 border-purple-400"
       >
         Book Your Free Strategy Call

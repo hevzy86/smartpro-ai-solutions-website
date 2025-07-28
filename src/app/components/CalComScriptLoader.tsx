@@ -11,19 +11,26 @@ export default function CalComScriptLoader() {
     document.body.appendChild(script);
 
     script.onload = () => {
-      // @ts-ignore
-      Cal('init', '30-min-ai-meeting', { origin: 'https://app.cal.com' });
-      // @ts-ignore
-      Cal.ns['30-min-ai-meeting']('inline', {
-        elementOrSelector: '#my-cal-inline-30-min-ai-meeting',
-        config: { layout: 'month_view' },
-        calLink: 'vladimir-rumyantsev-absjms/30-min-ai-meeting',
-      });
-      // @ts-ignore
-      Cal.ns['30-min-ai-meeting']('ui', {
-        hideEventTypeDetails: false,
-        layout: 'month_view',
-      });
+      // Wait for Cal to be available
+      const initCal = () => {
+        if (typeof window !== 'undefined' && (window as any).Cal) {
+          const Cal = (window as any).Cal;
+          Cal('init', '30-min-ai-meeting', { origin: 'https://app.cal.com' });
+          Cal.ns['30-min-ai-meeting']('inline', {
+            elementOrSelector: '#my-cal-inline-30-min-ai-meeting',
+            config: { layout: 'month_view' },
+            calLink: 'vladimir-rumyantsev-absjms/30-min-ai-meeting',
+          });
+          Cal.ns['30-min-ai-meeting']('ui', {
+            hideEventTypeDetails: false,
+            layout: 'month_view',
+          });
+        } else {
+          // Retry after a short delay if Cal is not ready
+          setTimeout(initCal, 100);
+        }
+      };
+      initCal();
     };
 
     return () => {
