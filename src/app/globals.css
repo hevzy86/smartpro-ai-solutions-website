@@ -33,7 +33,35 @@ body {
   padding: 0 !important;
 }
 
-/* Make Cal.com attribution/logo bar transparent and clean */
+/* Make Cal.com floating button match gradient style */
+.cal-floating-popup-button, .calcom-floating-popup-button, .cal-floating-button, .calcom-floating-button, .calcom-booking-button, .calcom-booking-popup-button, .calcom-widget-floating-button, .calcom-widget-button, .calcom-widget-popup-button {
+  position: relative !important;
+  background: none !important;
+  color: #fff !important;
+  border: 2px solid #d946ef !important;
+  border-radius: 1.5rem !important;
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10);
+  padding: 0.75rem 2.5rem !important;
+  overflow: hidden !important;
+  z-index: 1;
+}
+.cal-floating-popup-button::after, .calcom-floating-popup-button::after, .cal-floating-button::after, .calcom-floating-button::after, .calcom-booking-button::after, .calcom-booking-popup-button::after, .calcom-widget-floating-button::after, .calcom-widget-button::after, .calcom-widget-popup-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, #5a8fff 0%, #d946ef 100%);
+  opacity: 1;
+  pointer-events: none;
+  border-radius: 1.5rem;
+}
+.cal-floating-popup-button *, .calcom-floating-popup-button *, .cal-floating-button *, .calcom-floating-button *, .calcom-booking-button *, .calcom-booking-popup-button *, .calcom-widget-floating-button *, .calcom-widget-button *, .calcom-widget-popup-button * {
+  color: #fff !important;
+  fill: #fff !important;
+}
+
 .calcom-attribution,
 .calcom-inline-attribution,
 .p-2.text-center.text-xs.sm\:text-right.max-w-3xl, /* logo bar seen in HTML */
