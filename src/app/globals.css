@@ -21,6 +21,7 @@ body {
 
 /* Hide Cal.com skeleton loading bar */
 #skeleton-container {
+  display: none !important;
   padding: 0 !important;
   margin: 0 !important;
 }
@@ -29,4 +30,22 @@ body {
 .cal-inline-container {
   height: auto !important;
   min-height: 540px !important;
+  padding: 0 !important;
+}
+
+/* Make Cal.com attribution/logo bar transparent and clean */
+.calcom-attribution,
+.calcom-inline-attribution,
+.p-2.text-center.text-xs.sm\:text-right.max-w-3xl, /* logo bar seen in HTML */
+.p-2.text-center.text-xs {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: transparent !important;
+}
+
+.p-2.text-center.text-xs.sm\:text-right.max-w-3xl a,
+.p-2.text-center.text-xs.sm\:text-right.max-w-3xl img {
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
