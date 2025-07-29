@@ -13,15 +13,36 @@ export default function ServicesSection() {
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Card 1 */}
-          <div className="bg-[#19172a] rounded-2xl p-8 shadow-lg flex flex-col h-full">
-            <div className="mb-4"><span className="inline-block text-3xl text-green-400"><svg width='32' height='32' fill='none' viewBox='0 0 24 24'><path fill='#22d3ee' d='M12 2a10 10 0 100 20 10 10 0 000-20zm0 18.5A8.5 8.5 0 113.5 12 8.51 8.51 0 0112 20.5z'/><path fill='#22d3ee' d='M12 7a1 1 0 011 1v5h3a1 1 0 110 2h-4a1 1 0 01-1-1V8a1 1 0 011-1z'/></svg></span></div>
-            <h3 className="text-white text-xl font-bold mb-2">AI-Powered Voice Agents</h3>
-            <p className="text-gray-300 mb-4">Get a 24/7 AI receptionist for your business.<br/>Smart voice agents that handle client calls, schedule appointments, and answer questions automatically.</p>
+          <div className="bg-[#1a1a2e] rounded-2xl p-8 shadow-2xl flex flex-col h-full border border-[#262a40]">
+            {/* Green Robot Icon */}
+            <div className="mb-6">
+              <div className="w-12 h-12 flex items-center justify-center">
+                <svg className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                  <path d="M12 8V4H8"></path>
+                  <rect width="16" height="12" x="4" y="8" rx="2"></rect>
+                  <path d="M2 14h2"></path>
+                  <path d="M20 14h2"></path>
+                  <path d="M15 13v2"></path>
+                  <path d="M9 13v2"></path>
+                </svg>
+              </div>
+            </div>
+            
+            <h3 className="text-white text-2xl font-bold mb-4">AI-Powered Voice Agents</h3>
+            
+            <p className="text-gray-300 text-lg mb-4 font-medium">
+              Get a 24/7 AI receptionist for your business.
+            </p>
+            
+            <p className="text-gray-400 mb-8 leading-relaxed">
+              Smart voice agents that handle client calls, schedule appointments, and answer questions automatically.
+            </p>
+            
             <ul className="text-yellow-300 font-medium space-y-2 list-disc list-inside">
               <li>Automated Call Handling</li>
               <li>Smart Scheduling</li>
               <li>FAQ Management</li>
-              <li>Chatbots and Chat Agents</li>
+              <li>Transcription Recording</li>
             </ul>
           </div>
           {/* Card 2 */}
@@ -37,26 +58,67 @@ export default function ServicesSection() {
             </ul>
           </div>
           {/* Card 3 */}
-          <div className="bg-[#19172a] rounded-2xl p-8 shadow-lg flex flex-col h-full">
-            <div className="mb-4"><span className="inline-block text-3xl text-blue-400"><svg width='32' height='32' fill='none' viewBox='0 0 24 24'><rect x='4' y='4' width='16' height='16' rx='3' stroke='#38bdf8' strokeWidth='2'/><path d='M8 8h8v8H8z' fill='#38bdf8'/></svg></span></div>
-            <h3 className="text-white text-xl font-bold mb-2">Workflow & Document Automation</h3>
-            <p className="text-gray-300 mb-4">Streamline your business processes.<br/>Custom automation solutions that save time and reduce operational costs.</p>
+          <div className="bg-[#1a1a2e] rounded-2xl p-8 shadow-2xl flex flex-col h-full border border-[#262a40]">
+            {/* Blue Document Icon */}
+            <div className="mb-6">
+              <div className="w-12 h-12 flex items-center justify-center">
+                <svg className="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                  <rect x="4" y="4" width="16" height="16" rx="3"></rect>
+                  <path d="M8 8h8v8H8z"></path>
+                </svg>
+              </div>
+            </div>
+            
+            <h3 className="text-white text-2xl font-bold mb-4">Workflow & Business Process Automation</h3>
+            
+            <p className="text-gray-300 text-lg mb-4 font-medium">
+              Automate repetitive tasks, documents, and internal workflows.
+            </p>
+            
+            <p className="text-gray-400 mb-8 leading-relaxed">
+              Custom solutions designed to eliminate manual work, reduce costs, and scale operations effortlessly.
+            </p>
+            
             <ul className="text-yellow-300 font-medium space-y-2 list-disc list-inside">
-              <li>Contract review</li>
-              <li>Billing workflows</li>
-              <li>Case-management tasks</li>
-              <li>AI powered websites, mobile apps</li>
+              <li>Contract & document automation</li>
+              <li>Billing & approval workflows</li>
+              <li>Task and case management</li>
+              <li>AI-powered tools for internal processes and customer interaction</li>
             </ul>
           </div>
           {/* Card 4 */}
-          <div className="bg-[#19172a] rounded-2xl p-8 shadow-lg flex flex-col h-full">
-            <div className="mb-4"><span className="inline-block text-3xl text-fuchsia-400"><svg width='32' height='32' fill='none' viewBox='0 0 24 24'><path d='M12 2l4 8h-8l4-8zm0 20v-4m0 0h4m-4 0H8' stroke='#a21caf' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'/></svg></span></div>
-            <h3 className="text-white text-xl font-bold mb-2">Custom MVP Development</h3>
-            <p className="text-gray-300 mb-4">Launch your product in weeks, not months.<br/>We build and deploy your MVP quickly to validate your ideas and start generating revenue.</p>
-            <ul className="text-yellow-300 font-medium space-y-2">
-              <li>⭐ Rapid Prototyping</li>
-              <li>⭐ AI Integration</li>
-              <li>⭐ Scalable Architecture</li>
+          <div className="bg-[#1a1a2e] rounded-2xl p-8 shadow-2xl flex flex-col h-full border border-[#262a40]">
+            {/* Yellow Brain Icon */}
+            <div className="mb-6">
+              <div className="w-12 h-12 flex items-center justify-center">
+                <svg className="w-8 h-8 text-purple-300" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                  <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"></path>
+                  <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"></path>
+                  <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"></path>
+                  <path d="M17.599 6.5a3 3 0 0 0 .399-1.375"></path>
+                  <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"></path>
+                  <path d="M3.477 10.896a4 4 0 0 1 .585-.396"></path>
+                  <path d="M19.938 10.5a4 4 0 0 1 .585.396"></path>
+                  <path d="M6 18a4 4 0 0 1-1.967-.516"></path>
+                  <path d="M19.967 17.484A4 4 0 0 1 18 18"></path>
+                </svg>
+              </div>
+            </div>
+            
+            <h3 className="text-white text-2xl font-bold mb-4">Custom AI Solutions</h3>
+            
+            <p className="text-gray-300 text-lg mb-4 font-medium">
+              Tailored AI-driven products for web, mobile, and internal systems.
+            </p>
+            
+            <p className="text-gray-400 mb-8 leading-relaxed">
+              We design and build custom websites, integrate AI into your existing workflows, and deliver mobile apps for iOS and Android — fast, secure, and scalable.
+            </p>
+            
+            <ul className="text-yellow-300 font-medium space-y-2 list-disc list-inside">
+              <li>AI-Powered Web Platforms</li>
+              <li>iOS & Android App Development</li>
+              <li>Integration with Existing Business Systems</li>
             </ul>
           </div>
         </div>

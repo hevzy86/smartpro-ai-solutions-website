@@ -1,17 +1,18 @@
 "use client";
 import CalComScriptLoader from "./components/CalComScriptLoader";
-import HeroSection from "./components/HeroSection";
-import ServicesSection from "./components/ServicesSection";
-import BookingSection from "./components/BookingSection";
-import ComparisonSection from "./components/ComparisonSection";
-import TransformationSection from "./components/TransformationSection";
-import PreviousWorkSection from "./components/PreviousWorkSection";
-import TechnologySection from "./components/TechnologySection";
-import ComparisonCalculatorSection from "./components/ComparisonCalculatorSection";
-import TransformationShowcaseSection from "./components/TransformationShowcaseSection";
-import FAQSection from "./components/FAQSection";
-import FooterSection from "./components/FooterSection";
-import FloatingBookButton from "./components/FloatingBookButton";
+import Header from './components/Header';
+import HeroSection from './components/HeroSection';
+import ServicesSection from './components/ServicesSection';
+import BookingSection from './components/BookingSection';
+import ComparisonSection from './components/ComparisonSection';
+import TransformationSection from './components/TransformationSection';
+import PreviousWorkSection from './components/PreviousWorkSection';
+import TechnologySection from './components/TechnologySection';
+import ComparisonCalculatorSection from './components/ComparisonCalculatorSection';
+import TransformationShowcaseSection from './components/TransformationShowcaseSection';
+import FAQSection from './components/FAQSection';
+import FooterSection from './components/FooterSection';
+import FloatingBookButton from './components/FloatingBookButton';
 
 export default function Home() {
   const openCalWidget = () => {
@@ -27,19 +28,22 @@ export default function Home() {
 
   return (
     <div className="font-sans min-h-screen flex flex-col bg-gradient-to-br from-[#0f1020] via-[#18123a] to-[#1a0a2f] text-white">
-      <CalComScriptLoader />
-      <HeroSection />
-      <ServicesSection />
-      <BookingSection />
-      <ComparisonSection />
-      <TransformationSection />
-      <PreviousWorkSection />
-      <TechnologySection />
-      <ComparisonCalculatorSection />
-      <TransformationShowcaseSection />
-      <FAQSection />
-      <FooterSection />
-      <FloatingBookButton onClick={openCalWidget} />
+      <Header />
+      <div className="pt-16">
+        <CalComScriptLoader />
+        <HeroSection />
+        <ServicesSection />
+        <BookingSection />
+        <ComparisonSection />
+        <TransformationSection />
+        <PreviousWorkSection />
+        <TechnologySection />
+        <ComparisonCalculatorSection />
+        <TransformationShowcaseSection />
+        <FAQSection />
+        <FooterSection />
+        <FloatingBookButton onClick={openCalWidget} />
+      </div>
     </div>
   );
 }
