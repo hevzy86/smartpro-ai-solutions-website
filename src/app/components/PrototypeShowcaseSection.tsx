@@ -1,0 +1,271 @@
+"use client";
+import { useState } from 'react';
+import Image from 'next/image';
+
+interface Prototype {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  secondaryImage?: string;
+  videoUrl?: string;
+  technologies: string[];
+}
+
+const prototypes: Prototype[] = [
+  {
+    id: 'ai-medical',
+    title: 'AI Medical Assistant',
+    description: 'Intelligent medical consultation system with symptom analysis and treatment recommendations',
+    image: '/prototypes/ai_medical.png',
+    videoUrl: 'https://youtube.com/watch?v=example1',
+    technologies: ['AI/ML', 'Healthcare', 'NLP']
+  },
+  {
+    id: 'elevator-company',
+    title: 'Smart Elevator Management',
+    description: 'IoT-enabled elevator monitoring and predictive maintenance system',
+    image: '/prototypes/elevatorCompany.png',
+    videoUrl: 'https://youtube.com/watch?v=example2',
+    technologies: ['IoT', 'Predictive Analytics', 'Dashboard']
+  },
+  {
+    id: 'lead-generation',
+    title: 'AI Lead Generation',
+    description: 'Automated lead qualification and nurturing system with intelligent scoring',
+    image: '/prototypes/leadGeneration.png',
+    videoUrl: 'https://youtube.com/watch?v=example3',
+    technologies: ['CRM', 'AI Scoring', 'Automation']
+  },
+  {
+    id: 'n8n-schema',
+    title: 'Workflow Automation',
+    description: 'Complex business process automation with n8n integration and custom nodes',
+    image: '/prototypes/n8n_Schema.png',
+    videoUrl: 'https://youtube.com/watch?v=example4',
+    technologies: ['n8n', 'API Integration', 'Workflow']
+  },
+  {
+    id: 'smart-bite',
+    title: 'SmartBite AI',
+    description: 'Comprehensive nutrition app with AI recommendations, meal planning, and dietary goal optimization',
+    image: '/prototypes/smartBite.png',
+    secondaryImage: '/prototypes/smartBiteAi2.png',
+    videoUrl: 'https://youtube.com/watch?v=example5',
+    technologies: ['React Native', 'AI Recommendations', 'ML', 'Nutrition API', 'Health']
+  }
+];
+
+export default function PrototypeShowcaseSection() {
+  const [selectedPrototype, setSelectedPrototype] = useState<Prototype | null>(null);
+
+  const openVideo = (prototype: Prototype) => {
+    if (prototype.videoUrl) {
+      window.open(prototype.videoUrl, '_blank');
+    }
+  };
+
+  const closeModal = () => {
+    setSelectedPrototype(null);
+  };
+
+  return (
+    <section className="py-20 px-4 relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0f1020] via-[#18123a] to-[#1a0a2f]"></div>
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+      
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            SmartPro AI in Action
+          </h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Explore our cutting-edge prototypes and see how we transform ideas into intelligent solutions
+          </p>
+        </div>
+
+        {/* Prototypes Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {prototypes.map((prototype) => (
+            <div
+              key={prototype.id}
+              className="group relative bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20"
+            >
+              {/* Image Container */}
+              <div className="relative aspect-video overflow-hidden">
+                {prototype.secondaryImage ? (
+                  // Dual image layout for SmartBite AI
+                  <div className="flex h-full">
+                    <div className="relative flex-1">
+                      <Image
+                        src={prototype.image}
+                        alt={`${prototype.title} - Main`}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-110"
+                      />
+                    </div>
+                    <div className="relative flex-1">
+                      <Image
+                        src={prototype.secondaryImage}
+                        alt={`${prototype.title} - Enhanced`}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-110"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  // Single image layout
+                  <Image
+                    src={prototype.image}
+                    alt={prototype.title}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                )}
+                
+                {/* Play Overlay */}
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <button
+                    onClick={() => openVideo(prototype)}
+                    className="bg-blue-600 hover:bg-blue-700 text-white rounded-full p-4 transform scale-0 group-hover:scale-100 transition-transform duration-300 shadow-lg hover:shadow-blue-500/50"
+                  >
+                    <svg className="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Gradient Overlay */}
+                <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/80 to-transparent"></div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                  {prototype.title}
+                </h3>
+                <p className="text-gray-400 text-sm mb-4 line-clamp-2">
+                  {prototype.description}
+                </p>
+
+                {/* Technologies */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {prototype.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2 py-1 text-xs bg-blue-500/20 text-blue-300 rounded-full border border-blue-500/30"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => openVideo(prototype)}
+                    className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-2 px-4 rounded-lg transition-all duration-300 text-sm font-medium"
+                  >
+                    Watch Demo
+                  </button>
+                  <button
+                    onClick={() => setSelectedPrototype(prototype)}
+                    className="px-4 py-2 border border-gray-600 hover:border-blue-500 text-gray-300 hover:text-white rounded-lg transition-all duration-300 text-sm"
+                  >
+                    Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Call to Action */}
+        <div className="text-center mt-16">
+          <p className="text-gray-400 mb-6">
+            Ready to bring your ideas to life with AI?
+          </p>
+          <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
+            Start Your Project
+          </button>
+        </div>
+      </div>
+
+      {/* Modal for Details */}
+      {selectedPrototype && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-gray-700">
+            <div className="p-6">
+              <div className="flex justify-between items-start mb-4">
+                <h3 className="text-2xl font-bold text-white">{selectedPrototype.title}</h3>
+                <button
+                  onClick={closeModal}
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              
+              <div className="relative aspect-video mb-4 rounded-lg overflow-hidden">
+                {selectedPrototype.secondaryImage ? (
+                  // Dual image layout for SmartBite AI in modal
+                  <div className="flex h-full">
+                    <div className="relative flex-1">
+                      <Image
+                        src={selectedPrototype.image}
+                        alt={`${selectedPrototype.title} - Main`}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="relative flex-1">
+                      <Image
+                        src={selectedPrototype.secondaryImage}
+                        alt={`${selectedPrototype.title} - Enhanced`}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  // Single image layout in modal
+                  <Image
+                    src={selectedPrototype.image}
+                    alt={selectedPrototype.title}
+                    fill
+                    className="object-cover"
+                  />
+                )}
+              </div>
+              
+              <p className="text-gray-300 mb-4">{selectedPrototype.description}</p>
+              
+              <div className="flex flex-wrap gap-2 mb-6">
+                {selectedPrototype.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1 text-sm bg-blue-500/20 text-blue-300 rounded-full border border-blue-500/30"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              
+              <button
+                onClick={() => openVideo(selectedPrototype)}
+                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 px-6 rounded-lg transition-all duration-300 font-medium"
+              >
+                Watch Full Demo
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}

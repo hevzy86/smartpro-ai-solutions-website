@@ -10,6 +10,7 @@ import PreviousWorkSection from './components/PreviousWorkSection';
 import TechnologySection from './components/TechnologySection';
 import ComparisonCalculatorSection from './components/ComparisonCalculatorSection';
 import TransformationShowcaseSection from './components/TransformationShowcaseSection';
+import PrototypeShowcaseSection from './components/PrototypeShowcaseSection';
 import FAQSection from './components/FAQSection';
 import FooterSection from './components/FooterSection';
 import FloatingBookButton from './components/FloatingBookButton';
@@ -33,6 +34,7 @@ export default function Home() {
         <CalComScriptLoader />
         <HeroSection />
         <ServicesSection />
+        <PrototypeShowcaseSection />
         <BookingSection />
         <ComparisonSection />
         <TransformationSection />
