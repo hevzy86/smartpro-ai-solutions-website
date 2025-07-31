@@ -4,7 +4,6 @@ import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import ServicesSection from './components/ServicesSection';
 import BookingSection from './components/BookingSection';
-import ComparisonSection from './components/ComparisonSection';
 import TransformationSection from './components/TransformationSection';
 import PreviousWorkSection from './components/PreviousWorkSection';
 import TechnologySection from './components/TechnologySection';
@@ -34,13 +33,12 @@ export default function Home() {
         <CalComScriptLoader />
         <HeroSection />
         <ServicesSection />
+        <ComparisonCalculatorSection />
         <PrototypeShowcaseSection />
         <BookingSection />
-        <ComparisonSection />
         <TransformationSection />
         <PreviousWorkSection />
         <TechnologySection />
-        <ComparisonCalculatorSection />
         <TransformationShowcaseSection />
         <FAQSection />
         <FooterSection />

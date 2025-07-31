@@ -11,12 +11,17 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Brand */}
-          <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold">
-              <span className="bg-gradient-to-r from-white via-purple-400 to-blue-400 bg-clip-text text-transparent">
-                VoiceScaleAI
-              </span>
-            </h1>
+          <div className="flex items-center gap-0 select-none">
+            <img
+              src="/smartPro4.png"
+              alt="Smart Pro Solutions Logo"
+              className="h-18 w-18 object-contain mr-0"
+              style={{ background: 'transparent' }}
+              draggable="false"
+            />
+            <span className="text-2xl font-bold bg-gradient-to-r from-white via-purple-400 to-blue-400 bg-clip-text text-transparent">
+              Smart <span className="font-extrabold">Pro Solutions</span>
+            </span>
           </div>
 
           {/* Navigation Links */}
