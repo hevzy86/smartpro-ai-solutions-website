@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 interface Prototype {
@@ -8,6 +8,7 @@ interface Prototype {
   description: string;
   image: string;
   secondaryImage?: string;
+  images?: string[]; // For multiple images slideshow
   videoUrl?: string;
   technologies: string[];
 }
@@ -18,6 +19,7 @@ const prototypes: Prototype[] = [
     title: 'AI Medical Assistant',
     description: 'Intelligent medical consultation system with symptom analysis and treatment recommendations',
     image: '/prototypes/ai_medical.png',
+    images: ['/prototypes/ai_medical.png?v=2', '/prototypes/ai_medical2.png?v=2', '/prototypes/ai_medical3.png?v=2'],
     videoUrl: 'https://youtube.com/watch?v=example1',
     technologies: ['AI/ML', 'Healthcare', 'NLP']
   },
@@ -26,6 +28,7 @@ const prototypes: Prototype[] = [
     title: 'Smart Elevator Management',
     description: 'IoT-enabled elevator monitoring and predictive maintenance system',
     image: '/prototypes/elevatorCompany.png',
+    secondaryImage: '/prototypes/elevatorCompany2.png',
     videoUrl: 'https://youtube.com/watch?v=example2',
     technologies: ['IoT', 'Predictive Analytics', 'Dashboard']
   },
@@ -50,14 +53,26 @@ const prototypes: Prototype[] = [
     title: 'SmartBite AI',
     description: 'Comprehensive nutrition app with AI recommendations, meal planning, and dietary goal optimization',
     image: '/prototypes/smartBite.png',
-    secondaryImage: '/prototypes/smartBiteAi2.png',
+    images: ['/prototypes/smartBite.png', '/prototypes/smartBiteAi2.png', '/prototypes/SmartBiteAI4.png'],
     videoUrl: 'https://youtube.com/watch?v=example5',
     technologies: ['React Native', 'AI Recommendations', 'ML', 'Nutrition API', 'Health']
+  },
+  {
+    id: 'ai-persona-baby-podcast',
+    title: 'AI Persona Baby Podcast',
+    description: 'Revolutionary AI-powered podcast platform that transforms any person into a personalized voice host and distributes content across all social media platforms from one dashboard',
+    image: '/prototypes/BabyPodcast1.png',
+    images: ['/prototypes/BabyPodcast1.png', '/prototypes/babypodcast2.png', '/prototypes/BabyPodcast3.png?v=2'],
+    videoUrl: 'https://youtube.com/watch?v=example7',
+    technologies: ['AI Voice Cloning', 'Podcast Generation', 'Social Media API', 'Cross-Platform Publishing', 'NLP', 'Audio Processing']
   }
 ];
 
 export default function PrototypeShowcaseSection() {
   const [selectedPrototype, setSelectedPrototype] = useState<Prototype | null>(null);
+  const [hoveredPrototype, setHoveredPrototype] = useState<string | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState<{[key: string]: number}>({});
+  const intervalRefs = useRef<{[key: string]: NodeJS.Timeout}>({});
 
   const openVideo = (prototype: Prototype) => {
     if (prototype.videoUrl) {
@@ -68,6 +83,52 @@ export default function PrototypeShowcaseSection() {
   const closeModal = () => {
     setSelectedPrototype(null);
   };
+
+  const startSlideshow = (prototypeId: string, images: string[]) => {
+    if (intervalRefs.current[prototypeId]) {
+      clearInterval(intervalRefs.current[prototypeId]);
+    }
+    
+    setCurrentImageIndex(prev => ({ ...prev, [prototypeId]: 0 }));
+    
+    intervalRefs.current[prototypeId] = setInterval(() => {
+      setCurrentImageIndex(prev => ({
+        ...prev,
+        [prototypeId]: ((prev[prototypeId] || 0) + 1) % images.length
+      }));
+    }, 1000); // Change image every 1 second
+  };
+
+  const stopSlideshow = (prototypeId: string) => {
+    if (intervalRefs.current[prototypeId]) {
+      clearInterval(intervalRefs.current[prototypeId]);
+      delete intervalRefs.current[prototypeId];
+    }
+    setCurrentImageIndex(prev => ({ ...prev, [prototypeId]: 0 }));
+  };
+
+  const handleMouseEnter = (prototype: Prototype) => {
+    setHoveredPrototype(prototype.id);
+    if (prototype.images && prototype.images.length > 1) {
+      startSlideshow(prototype.id, prototype.images);
+    }
+  };
+
+  const handleMouseLeave = (prototype: Prototype) => {
+    setHoveredPrototype(null);
+    if (prototype.images && prototype.images.length > 1) {
+      stopSlideshow(prototype.id);
+    }
+  };
+
+  // Cleanup intervals on unmount
+  useEffect(() => {
+    return () => {
+      Object.values(intervalRefs.current).forEach(interval => {
+        if (interval) clearInterval(interval);
+      });
+    };
+  }, []);
 
   return (
     <section className="py-20 px-4 relative overflow-hidden">
@@ -88,33 +149,46 @@ export default function PrototypeShowcaseSection() {
         </div>
 
         {/* Prototypes Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8">
           {prototypes.map((prototype) => (
             <div
               key={prototype.id}
               className="group relative bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20"
+              onMouseEnter={() => handleMouseEnter(prototype)}
+              onMouseLeave={() => handleMouseLeave(prototype)}
             >
               {/* Image Container */}
               <div className="relative aspect-video overflow-hidden">
-                {prototype.secondaryImage ? (
-                  // Dual image layout for SmartBite AI
-                  <div className="flex h-full">
-                    <div className="relative flex-1">
+                {prototype.images && prototype.images.length > 1 ? (
+                  // Multiple images slideshow (AI Medical Assistant)
+                  <div className="relative h-full">
+                    {prototype.images.map((img, index) => (
                       <Image
-                        src={prototype.image}
-                        alt={`${prototype.title} - Main`}
+                        key={index}
+                        src={img}
+                        alt={`${prototype.title} - ${index + 1}`}
                         fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-110"
+                        className={`object-cover transition-all duration-500 group-hover:scale-110 absolute inset-0 ${
+                          index === (currentImageIndex[prototype.id] || 0) ? 'opacity-100' : 'opacity-0'
+                        }`}
                       />
-                    </div>
-                    <div className="relative flex-1">
-                      <Image
-                        src={prototype.secondaryImage}
-                        alt={`${prototype.title} - Enhanced`}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-110"
-                      />
-                    </div>
+                    ))}
+                  </div>
+                ) : prototype.secondaryImage ? (
+                  // Hover-switching image layout for SmartBite AI
+                  <div className="relative h-full">
+                    <Image
+                      src={prototype.image}
+                      alt={`${prototype.title} - Main`}
+                      fill
+                      className="object-cover transition-all duration-500 group-hover:opacity-0 group-hover:scale-110"
+                    />
+                    <Image
+                      src={prototype.secondaryImage}
+                      alt={`${prototype.title} - Enhanced`}
+                      fill
+                      className="object-cover transition-all duration-500 opacity-0 group-hover:opacity-100 group-hover:scale-110 absolute inset-0"
+                    />
                   </div>
                 ) : (
                   // Single image layout
