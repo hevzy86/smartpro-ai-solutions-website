@@ -60,14 +60,7 @@ export default function HeroSection() {
         {/* New Headline & Subheadline */}
         {/* New Headline & Subheadline */}
         <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-center mb-6 leading-tight">
-          Start{" "}
-          <span className="text-red-400 drop-shadow-[0_2px_8px_rgba(255,0,0,0.7)]">
-            saving big
-          </span>{" "}
-          with{" "}
-          <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 text-transparent bg-clip-text drop-shadow-[0_2px_12px_rgba(56,189,248,0.7)]">
-            AI-powered support!
-          </span>
+          Transform Your Business with AI Innovation
         </h1>
         <div className="text-lg sm:text-2xl text-center max-w-2xl mb-8 text-gray-200 flex flex-col gap-2">
           <span>

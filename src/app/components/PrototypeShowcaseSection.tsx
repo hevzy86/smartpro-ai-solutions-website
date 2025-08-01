@@ -257,15 +257,7 @@ export default function PrototypeShowcaseSection() {
           ))}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <p className="text-gray-400 mb-6">
-            Ready to bring your ideas to life with AI?
-          </p>
-          <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
-            Start Your Project
-          </button>
-        </div>
+
       </div>
 
       {/* Modal for Details */}

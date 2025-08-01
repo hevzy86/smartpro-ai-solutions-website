@@ -32,8 +32,8 @@ export default function Home() {
         <ServicesSection />
         <ComparisonCalculatorSection />
         <PrototypeShowcaseSection />
-        <BookingSection />
         <TransformationSection />
+        <BookingSection />
         <FAQSection />
         <FooterSection />
         <FloatingBookButton onClick={openCalWidget} />
