@@ -1,25 +1,25 @@
 "use client";
 import CalComScriptLoader from "./components/CalComScriptLoader";
-import Header from './components/Header';
-import HeroSection from './components/HeroSection';
-import ServicesSection from './components/ServicesSection';
-import BookingSection from './components/BookingSection';
-import TransformationSection from './components/TransformationSection';
-import ComparisonCalculatorSection from './components/ComparisonCalculatorSection';
-import PrototypeShowcaseSection from './components/PrototypeShowcaseSection';
-import FAQSection from './components/FAQSection';
-import FooterSection from './components/FooterSection';
-import FloatingBookButton from './components/FloatingBookButton';
+import Header from "./components/Header";
+import HeroSection from "./components/HeroSection";
+import ServicesSection from "./components/ServicesSection";
+import BookingSection from "./components/BookingSection";
+import TransformationSection from "./components/TransformationSection";
+import ComparisonCalculatorSection from "./components/ComparisonCalculatorSection";
+import PrototypeShowcaseSection from "./components/PrototypeShowcaseSection";
+import FAQSection from "./components/FAQSection";
+import FooterSection from "./components/FooterSection";
+import FloatingBookButton from "./components/FloatingBookButton";
 
 export default function Home() {
   const openCalWidget = () => {
     // Scroll to the booking section
-    const bookingSection = document.getElementById('book-call');
+    const bookingSection = document.getElementById("book-call");
     if (bookingSection) {
-      bookingSection.scrollIntoView({ behavior: 'smooth' });
+      bookingSection.scrollIntoView({ behavior: "smooth" });
     } else {
       // Fallback: scroll to top
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 

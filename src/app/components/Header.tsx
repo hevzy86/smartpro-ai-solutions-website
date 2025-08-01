@@ -29,22 +29,28 @@ export default function Header() {
           {/* Navigation Links */}
           <nav className="hidden md:flex space-x-8">
             <a
-              href="#home"
+              href="#"
               className="text-gray-300 hover:text-white transition-colors duration-200"
+              onClick={e => { e.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'}); }}
             >
-              Home
+              On Top
             </a>
             <a
               href="#services"
               className="text-gray-300 hover:text-white transition-colors duration-200"
             >
-              Services
+              Solutions
             </a>
             <a
-              href="#contact"
+              href="#footer"
               className="text-gray-300 hover:text-white transition-colors duration-200"
+              onClick={e => {
+                e.preventDefault();
+                const footer = document.getElementById('footer');
+                if (footer) footer.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
-              Contact
+              Contact Us
             </a>
             <a
               href="#faq"
