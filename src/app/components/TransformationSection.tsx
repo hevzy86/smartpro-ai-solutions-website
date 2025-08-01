@@ -1,9 +1,64 @@
+declare global {
+  interface Window {
+    VANTA: any;
+  }
+}
+
+export {};
+
+import { useEffect, useRef, useState } from "react";
 import NeonLogoIcon from "./NeonLogoIcon";
+import Script from "next/script";
 
 export default function TransformationSection() {
+  const vantaRef = useRef<HTMLDivElement>(null);
+  const [vantaEffect, setVantaEffect] = useState<any>(null);
+
+  useEffect(() => {
+    function initVanta() {
+      if (
+        typeof window !== "undefined" &&
+        window.VANTA &&
+        window.VANTA.GLOBE &&
+        vantaRef.current
+      ) {
+        if (vantaEffect) vantaEffect.destroy();
+        const effect = window.VANTA.GLOBE({
+          el: "#vanta-transformation",
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.0,
+          minWidth: 200.0,
+          scale: 1.0,
+          scaleMobile: 1.0,
+          color: 0xdd3fff,
+        });
+        setVantaEffect(effect);
+      } else {
+        setTimeout(initVanta, 100);
+      }
+    }
+    initVanta();
+    return () => {
+      if (vantaEffect && typeof vantaEffect.destroy === "function") vantaEffect.destroy();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <section className="w-full py-20 px-2 bg-gradient-to-br from-[#181032] via-[#1a0a2f] to-[#0f1020] flex justify-center">
-      <div className="w-full max-w-5xl flex flex-col gap-8">
+    <>
+      <Script src="/three.min.js" strategy="beforeInteractive" />
+      <Script src="/vanta.globe.min.js" strategy="beforeInteractive" />
+      <section className="w-full py-20 px-2 bg-gradient-to-br from-[#181032] via-[#1a0a2f] to-[#0f1020] flex justify-center relative overflow-hidden">
+        {/* Vanta Globe Animated Background */}
+        <div
+          ref={vantaRef}
+          id="vanta-transformation"
+          className="absolute inset-0 w-full h-full z-0"
+        />
+        {/* Main Content */}
+        <div className="w-full max-w-5xl flex flex-col gap-8 relative z-10">
         {/* Headline */}
         <h2 className="text-3xl md:text-5xl font-extrabold text-center mb-6">
           Transform Your Business with{" "}
@@ -156,5 +211,6 @@ export default function TransformationSection() {
         </div>
       </div>
     </section>
+  </>
   );
 }
