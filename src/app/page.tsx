@@ -5,10 +5,7 @@ import HeroSection from './components/HeroSection';
 import ServicesSection from './components/ServicesSection';
 import BookingSection from './components/BookingSection';
 import TransformationSection from './components/TransformationSection';
-import PreviousWorkSection from './components/PreviousWorkSection';
-import TechnologySection from './components/TechnologySection';
 import ComparisonCalculatorSection from './components/ComparisonCalculatorSection';
-import TransformationShowcaseSection from './components/TransformationShowcaseSection';
 import PrototypeShowcaseSection from './components/PrototypeShowcaseSection';
 import FAQSection from './components/FAQSection';
 import FooterSection from './components/FooterSection';
@@ -37,9 +34,6 @@ export default function Home() {
         <PrototypeShowcaseSection />
         <BookingSection />
         <TransformationSection />
-        <PreviousWorkSection />
-        <TechnologySection />
-        <TransformationShowcaseSection />
         <FAQSection />
         <FooterSection />
         <FloatingBookButton onClick={openCalWidget} />
