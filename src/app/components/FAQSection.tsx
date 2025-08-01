@@ -11,11 +11,11 @@ export default function FAQSection() {
         <div className="space-y-4">
           <details className="group rounded-lg overflow-hidden text-white">
             <summary className="cursor-pointer px-6 py-4 font-semibold text-lg bg-purple-800/80 group-open:bg-purple-900 transition flex items-center justify-between">
-              How quickly can AI voice agents be deployed?
+              How quickly can AI solutions be implemented?
               <span className="ml-2 text-xl">▾</span>
             </summary>
             <div className="bg-[#181c2f] px-6 py-4 text-gray-200">
-              Most deployments are completed within 2-4 weeks, including custom training, integration testing, and staff onboarding.
+              Most deployments are completed within 1–3 weeks, including custom model training, integration testing, and staff onboarding.
             </div>
           </details>
           
