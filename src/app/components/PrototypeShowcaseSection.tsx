@@ -52,8 +52,8 @@ const prototypes: Prototype[] = [
     id: 'smart-bite',
     title: 'SmartBite AI',
     description: 'Comprehensive nutrition app with AI recommendations, meal planning, and dietary goal optimization',
-    image: '/prototypes/smartBite.png',
-    images: ['/prototypes/smartBite.png', '/prototypes/smartBiteAi2.png', '/prototypes/SmartBiteAI4.png'],
+    image: '/prototypes/SmartBiteAI4.png',
+    images: ['/prototypes/SmartBiteAI4.png', '/prototypes/smartBiteAi2.png', '/prototypes/smartBite.png'],
     videoUrl: 'https://youtube.com/watch?v=example5',
     technologies: ['React Native', 'AI Recommendations', 'ML', 'Nutrition API', 'Health']
   },
@@ -61,8 +61,8 @@ const prototypes: Prototype[] = [
     id: 'ai-persona-baby-podcast',
     title: 'AI Persona Baby Podcast',
     description: 'Revolutionary AI-powered podcast platform that transforms any person into a personalized voice host and distributes content across all social media platforms from one dashboard',
-    image: '/prototypes/BabyPodcast1.png',
-    images: ['/prototypes/BabyPodcast1.png', '/prototypes/babypodcast2.png', '/prototypes/BabyPodcast3.png?v=2'],
+    image: '/prototypes/babypodcast2.png',
+    images: ['/prototypes/babypodcast2.png', '/prototypes/BabyPodcast1.png', '/prototypes/BabyPodcast3.png?v=2'],
     videoUrl: 'https://youtube.com/watch?v=example7',
     technologies: ['AI Voice Cloning', 'Podcast Generation', 'Social Media API', 'Cross-Platform Publishing', 'NLP', 'Audio Processing']
   }

@@ -2,7 +2,7 @@
 
 export default function FAQSection() {
   return (
-    <section className="w-full flex justify-center items-center py-16 px-2">
+    <section id="faq" className="w-full flex justify-center items-center py-16 px-2">
       <div className="w-full max-w-4xl">
         <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-12 text-white">
           FREQUENTLY ASKED <span className="text-green-400 drop-shadow-[0_2px_8px_rgba(34,197,94,0.7)]">QUESTIONS</span>
