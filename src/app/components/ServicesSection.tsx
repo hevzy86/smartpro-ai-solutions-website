@@ -1,3 +1,5 @@
+import NeonLogoIcon from "./NeonLogoIcon";
+
 export default function ServicesSection() {
   return (
     <section
@@ -178,43 +180,17 @@ export default function ServicesSection() {
             {/* Yellow Brain Icon */}
             <div className="mb-6">
               <div className="w-12 h-12 flex items-center justify-center">
-                <svg
-                  className="w-8 h-8 text-purple-300"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"></path>
-                  <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"></path>
-                  <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"></path>
-                  <path d="M17.599 6.5a3 3 0 0 0 .399-1.375"></path>
-                  <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"></path>
-                  <path d="M3.477 10.896a4 4 0 0 1 .585-.396"></path>
-                  <path d="M19.938 10.5a4 4 0 0 1 .585.396"></path>
-                  <path d="M6 18a4 4 0 0 1-1.967-.516"></path>
-                  <path d="M19.967 17.484A4 4 0 0 1 18 18"></path>
-                </svg>
-              </div>
+  {/* NeonLogoIcon for Our Solution */}
+  <NeonLogoIcon size={48} className="drop-shadow-xl" />
+</div>
             </div>
 
             <h3 className="text-white text-2xl font-bold mb-4">
-              Custom AI Solutions
-            </h3>
-
-            <p className="text-gray-300 text-lg mb-4 font-medium">
-              Tailored AI-driven products for web, mobile, and internal systems.
-            </p>
-
-            <div className="flex-grow">
-              <p className="text-gray-400 mb-8 leading-relaxed">
-                We design and build custom websites, integrate AI into your
-                existing workflows, and deliver mobile apps for iOS and Android
-                — fast, secure, and scalable.
-              </p>
-            </div>
+  Our Solution
+</h3>
+<p className="text-gray-300 text-lg mb-4 font-medium">
+  We deploy AI Solutions that deliver instant, reliable customer interactions 24/7. Built on enterprise-grade architecture, our solutions reduce support costs by up to 70% in the first month—no downtime, no mistakes, no limits.
+</p>
 
             <ul className="text-purple-300 font-medium space-y-2 list-disc list-outside ml-5 mt-auto">
               <li>AI-Powered Web Platforms</li>

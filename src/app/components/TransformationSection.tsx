@@ -1,3 +1,5 @@
+import NeonLogoIcon from "./NeonLogoIcon";
+
 export default function TransformationSection() {
   return (
     <section className="w-full py-20 px-2 bg-gradient-to-br from-[#181032] via-[#1a0a2f] to-[#0f1020] flex justify-center">
@@ -26,7 +28,7 @@ export default function TransformationSection() {
             <div className="bg-gradient-to-br from-[#4b1e2f] to-[#2c1222] rounded-2xl p-6 shadow-md">
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-red-400 text-xl">&#9888;</span>
-                <span className="text-lg font-bold text-white">The Problem We Solve</span>
+                <span className="text-lg font-bold text-fuchsia-400">The Problems We Solve</span>
               </div>
               <div className="text-gray-200 text-base">
                 We help businesses integrate AI into their existing systems or build custom solutions from scratch. Our AI solutions automate repetitive tasks and <span className='text-green-400 font-semibold'>reduce costs</span> — so your team can focus on what <span className='text-fuchsia-400 font-semibold'>truly matters</span>.
@@ -34,11 +36,11 @@ export default function TransformationSection() {
             </div>
             <div className="bg-gradient-to-br from-[#232a4a] to-[#181c2f] rounded-2xl p-6 shadow-md">
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-blue-400 text-xl">&#9904;</span>
-                <span className="text-lg font-bold text-white">Our Solution</span>
+                <span className="text-blue-400 text-xl mr-2">🧠</span>
+                <span className="text-lg font-bold text-green-400">Our Solutions</span>
               </div>
               <div className="text-gray-200 text-base mb-4">
-                We deploy custom <span className="text-blue-400 font-semibold">AI agents</span> that deliver instant, reliable customer interactions 24/7. Built on enterprise-grade architecture, our solutions reduce support costs by up to <span className="text-green-400 font-semibold">70%</span> in the first month—no downtime, no mistakes, no limits.
+                We deploy <span className="text-blue-400 font-semibold">AI Solutions</span> that deliver <span className="text-green-400 font-semibold">instant</span>, <span className="text-blue-400 font-semibold">reliable</span> customer interactions <span className="text-fuchsia-400 font-semibold">24/7</span>. Built on <span className="text-blue-400 font-semibold">enterprise-grade</span> architecture, our solutions <span className="text-green-400 font-semibold">reduce support costs</span> by up to <span className="text-green-400 font-semibold">70%</span> in the first month—<span className="text-blue-400 font-semibold">no downtime</span>, <span className="text-fuchsia-400 font-semibold">no mistakes</span>, <span className="text-blue-400 font-semibold">no limits</span>.
               </div>
               <div className="flex gap-4">
                 <div className="flex-1 bg-[#22253c] rounded-xl py-4 flex flex-col items-center">
@@ -55,25 +57,25 @@ export default function TransformationSection() {
         </div>
         {/* Expertise Areas */}
         <div className="w-full mt-4">
-          <div className="bg-gradient-to-br from-[#21274a] to-[#181c2f] rounded-2xl p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 shadow-lg">
-            <div className="flex items-center gap-2">
-              <span className="inline-block w-3 h-3 rounded-full bg-purple-400"></span>
-              <span className="text-white font-medium">Enterprise SaaS Architecture</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="inline-block w-3 h-3 rounded-full bg-blue-400"></span>
-              <span className="text-white font-medium">AI Voice Agent Development</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="inline-block w-3 h-3 rounded-full bg-green-400"></span>
-              <span className="text-white font-medium">Business Automation</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="inline-block w-3 h-3 rounded-full bg-fuchsia-400"></span>
-              <span className="text-white font-medium">AI Integration</span>
-            </div>
-          </div>
-        </div>
+  <div className="bg-gradient-to-br from-[#21274a] to-[#181c2f] rounded-2xl p-6 flex flex-row flex-nowrap justify-center items-center space-x-12 shadow-lg">
+    <div className="flex-1 flex items-center gap-2 justify-center">
+      <span className="inline-block w-3 h-3 rounded-full bg-purple-400 shrink-0"></span>
+      <span className="text-white font-medium">Flexible SaaS Architecture</span>
+    </div>
+    <div className="flex-1 flex items-center gap-2 justify-center">
+      <span className="inline-block w-3 h-3 rounded-full bg-blue-400 shrink-0"></span>
+      <span className="text-white font-medium">AI Voice Agent Development</span>
+    </div>
+    <div className="flex-1 flex items-center gap-2 justify-center">
+      <span className="inline-block w-3 h-3 rounded-full bg-green-400 shrink-0"></span>
+      <span className="text-white font-medium">Business Automation</span>
+    </div>
+    <div className="flex-1 flex items-center gap-2 justify-center last:ml-0">
+      <span className="inline-block w-3 h-3 rounded-full bg-fuchsia-400 shrink-0"></span>
+      <span className="text-white font-medium">AI Integration</span>
+    </div>
+  </div>
+</div>
       </div>
     </section>
   );
