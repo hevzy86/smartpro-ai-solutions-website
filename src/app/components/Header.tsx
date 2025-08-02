@@ -1,4 +1,3 @@
-import NeonLogoIcon from "./NeonLogoIcon";
 
 import { useState } from "react";
 

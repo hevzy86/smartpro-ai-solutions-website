@@ -1,5 +1,4 @@
 import { useRef, useEffect, useState } from "react";
-import NeonLogoIcon from "./NeonLogoIcon";
 import Script from "next/script";
 
 export default function HeroSection() {
