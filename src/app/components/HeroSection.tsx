@@ -16,7 +16,7 @@ export default function HeroSection() {
       ) {
         if (vantaEffect) vantaEffect.destroy();
         const effect = window.VANTA.NET({
-          el: "#vanta-hero",
+          el: vantaRef.current,
           mouseControls: true,
           touchControls: true,
           gyroControls: false,
@@ -35,9 +35,12 @@ export default function HeroSection() {
         setTimeout(initVanta, 100);
       }
     }
+    const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+      if (vantaEffect && typeof vantaEffect.destroy === "function") (vantaEffect as any).destroy();
+    };
     initVanta();
     return () => {
-      if (vantaEffect && typeof vantaEffect.destroy === "function") vantaEffect.destroy();
+      if (vantaEffect && typeof vantaEffect.destroy === "function") (vantaEffect as any).destroy();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

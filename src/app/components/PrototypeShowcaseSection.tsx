@@ -154,7 +154,7 @@ export default function PrototypeShowcaseSection() {
           navigator.serviceWorker
             .getRegistrations()
             .then(function (registrations) {
-              for (let registration of registrations) {
+              for(const registration of registrations) {
                 registration.unregister();
               }
             });
@@ -162,7 +162,7 @@ export default function PrototypeShowcaseSection() {
         // Clear Cache API
         if ("caches" in window) {
           caches.keys().then(function (names) {
-            for (let name of names) caches.delete(name);
+            for (const name of names) caches.delete(name);
           });
         }
         // Ensure scroll to top

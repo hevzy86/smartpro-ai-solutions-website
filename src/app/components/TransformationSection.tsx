@@ -1,17 +1,31 @@
 declare global {
   interface Window {
-    VANTA: any;
+    VANTA: {
+      GLOBE: (options: {
+        el: string;
+        mouseControls: boolean;
+        touchControls: boolean;
+        gyroControls: boolean;
+        minHeight: number;
+        minWidth: number;
+        scale: number;
+        scaleMobile: number;
+        color: number;
+      }) => {
+        destroy: () => void;
+      };
+    };
   }
 }
 
 export {};
 
-import { useEffect, useRef, useState } from "react";
+import React, { useState, useEffect, useRef } from 'react';
 import Script from "next/script";
 
 export default function TransformationSection() {
   const vantaRef = useRef<HTMLDivElement>(null);
-  const [vantaEffect, setVantaEffect] = useState<any>(null);
+  const [vantaEffect, setVantaEffect] = useState<{ destroy: () => void } | null>(null);
 
   useEffect(() => {
     function initVanta() {
@@ -40,8 +54,7 @@ export default function TransformationSection() {
     }
     initVanta();
     return () => {
-      if (vantaEffect && typeof vantaEffect.destroy === "function")
-        vantaEffect.destroy();
+      vantaEffect?.destroy();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

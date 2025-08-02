@@ -13,15 +13,14 @@ export default function CalComScriptLoader() {
     script.onload = () => {
       // Wait for Cal to be available
       const initCal = () => {
-        if (typeof window !== 'undefined' && (window as any).Cal) {
-          const Cal = (window as any).Cal;
-          Cal('init', '30-min-ai-meeting', { origin: 'https://app.cal.com' });
-          Cal.ns['30-min-ai-meeting']('inline', {
+        if (typeof window !== 'undefined' && window.Cal) {
+          window.Cal('init', '30-min-ai-meeting', { origin: 'https://app.cal.com' });
+          window.Cal.ns['30-min-ai-meeting']('inline', {
             elementOrSelector: '#my-cal-inline-30-min-ai-meeting',
             config: { layout: 'month_view' },
             calLink: 'vladimir-rumyantsev-absjms/30-min-ai-meeting',
           });
-          Cal.ns['30-min-ai-meeting']('ui', {
+          window.Cal.ns['30-min-ai-meeting']('ui', {
             hideEventTypeDetails: false,
             layout: 'month_view',
           });
