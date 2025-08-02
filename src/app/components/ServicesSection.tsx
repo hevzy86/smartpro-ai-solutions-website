@@ -26,8 +26,7 @@ export default function ServicesSection() {
           </span>
         </h3>
         <p className="text-center text-gray-300 mb-14 max-w-2xl mx-auto">
-          We turn ideas into profitable products using cutting-edge
-          technology.
+          We turn ideas into profitable products using cutting-edge technology.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Card 1 */}
@@ -161,7 +160,9 @@ export default function ServicesSection() {
               <li>Contract & document automation</li>
               <li>Billing & approval workflows</li>
               <li>Task and case management</li>
-              <li>AI-powered tools for internal processes and customer interaction</li>
+              <li>
+                AI-powered tools for internal processes and customer interaction
+              </li>
             </ul>
           </div>
           {/* Card 4 */}
@@ -190,14 +191,12 @@ export default function ServicesSection() {
                 </svg>
               </div>
             </div>
-            <h3 className="text-white text-2xl font-bold mb-4">
-              Our Solution
-            </h3>
+            <h3 className="text-white text-2xl font-bold mb-4">Our Solution</h3>
             <p className="text-gray-300 text-lg mb-4 font-medium">
               We deploy AI Solutions that deliver instant, reliable customer
               interactions 24/7. Built on enterprise-grade architecture, our
-              solutions reduce support costs by up to 70% in the first
-              month—no downtime, no mistakes, no limits.
+              solutions reduce support costs by up to 70% in the first month—no
+              downtime, no mistakes, no limits.
             </p>
             <ul className="text-purple-300 font-medium space-y-2 list-disc list-outside ml-5 mt-auto">
               <li>AI-Powered Web Platforms</li>

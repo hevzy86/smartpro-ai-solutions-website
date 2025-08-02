@@ -20,7 +20,7 @@ const prototypes: Prototype[] = [
     description: 'Intelligent medical consultation system with symptom analysis and treatment recommendations',
     image: '/prototypes/ai_medical.png',
     images: ['/prototypes/ai_medical.png?v=2', '/prototypes/ai_medical2.png?v=2', '/prototypes/ai_medical3.png?v=2'],
-    videoUrl: 'https://youtube.com/watch?v=example1',
+    videoUrl: 'https://youtu.be/oKNkyYYmRyc?si=u9OSiABGgrR2QPAV',
     technologies: ['AI/ML', 'Healthcare', 'NLP']
   },
   {
@@ -36,8 +36,12 @@ const prototypes: Prototype[] = [
     id: 'lead-generation',
     title: 'AI Lead Generation',
     description: 'Automated lead qualification and nurturing system with intelligent scoring',
-    image: '/prototypes/leadGeneration.png',
-    videoUrl: 'https://youtube.com/watch?v=example3',
+    image: '/prototypes/leadGeneration3.png',
+    images: [
+      '/prototypes/Lead Generation2.png',
+      '/prototypes/leadGeneration3.png'
+    ],
+    videoUrl: 'https://youtu.be/ZJ67gbyy81w',
     technologies: ['CRM', 'AI Scoring', 'Automation']
   },
   {
