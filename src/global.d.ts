@@ -1,3 +1,4 @@
+// Global type declarations for VANTA and Cal
 interface VantaEffect {
   destroy: () => void;
 }
@@ -32,4 +33,3 @@ declare global {
 }
 
 export {};
-

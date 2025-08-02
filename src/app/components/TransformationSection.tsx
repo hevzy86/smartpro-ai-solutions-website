@@ -1,22 +1,3 @@
-declare global {
-  interface Window {
-    VANTA: {
-      GLOBE: (options: {
-        el: string;
-        mouseControls: boolean;
-        touchControls: boolean;
-        gyroControls: boolean;
-        minHeight: number;
-        minWidth: number;
-        scale: number;
-        scaleMobile: number;
-        color: number;
-      }) => {
-        destroy: () => void;
-      };
-    };
-  }
-}
 
 export {};
 
