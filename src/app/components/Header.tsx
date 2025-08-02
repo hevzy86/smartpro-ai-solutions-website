@@ -82,9 +82,9 @@ export default function Header() {
           {/* Mobile menu button */}
           <div className="md:hidden">
             <button className="group flex flex-col justify-center items-center w-12 h-12 p-0 bg-transparent border-none focus:outline-none" onClick={()=>setMobileMenuOpen(v=>!v)}>
-              <div className="w-9 h-2 mb-1 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300"></div>
-              <div className="w-9 h-2 mb-1 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300"></div>
-              <div className="w-9 h-2 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300"></div>
+              <div className="w-9 h-1.5 mb-1 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300"></div>
+              <div className="w-9 h-1.5 mb-1 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300"></div>
+              <div className="w-9 h-1.5 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300"></div>
             </button>
             {mobileMenuOpen && (
               <div className="absolute top-16 right-4 bg-[#23253c] rounded-xl shadow-lg p-6 flex flex-col gap-4 z-50 w-[80vw] max-w-xs">

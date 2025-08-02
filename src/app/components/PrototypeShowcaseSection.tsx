@@ -69,6 +69,45 @@ const prototypes: Prototype[] = [
 ];
 
 export default function PrototypeShowcaseSection() {
+  const [touchedPrototype, setTouchedPrototype] = useState<string | null>(null);
+  const [isTouchDevice, setIsTouchDevice] = useState<boolean>(false);
+
+  // Dynamically detect touch device and update on resize/orientation change
+  useEffect(() => {
+    function updateIsTouch() {
+      setIsTouchDevice(
+        typeof window !== 'undefined' &&
+        ('ontouchstart' in window || window.matchMedia('(pointer: coarse)').matches)
+      );
+    }
+    updateIsTouch();
+    window.addEventListener('resize', updateIsTouch);
+    window.addEventListener('orientationchange', updateIsTouch);
+    window.addEventListener('pointerdown', updateIsTouch);
+    return () => {
+      window.removeEventListener('resize', updateIsTouch);
+      window.removeEventListener('orientationchange', updateIsTouch);
+      window.removeEventListener('pointerdown', updateIsTouch);
+    };
+  }, []);
+
+  // Clear touch state when switching to desktop
+  useEffect(() => {
+    if (!isTouchDevice) setTouchedPrototype(null);
+  }, [isTouchDevice]);
+
+  useEffect(() => {
+    if (!isTouchDevice) return;
+    const handleTouch = (e: TouchEvent) => {
+      // If tap was not on a card, clear touchedPrototype
+      if (!(e.target as HTMLElement).closest('.prototype-card')) {
+        setTouchedPrototype(null);
+      }
+    };
+    document.addEventListener('touchstart', handleTouch);
+    return () => document.removeEventListener('touchstart', handleTouch);
+  }, [isTouchDevice]);
+
   const [selectedPrototype, setSelectedPrototype] = useState<Prototype | null>(null);
   const [hoveredPrototype, setHoveredPrototype] = useState<string | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState<{[key: string]: number}>({});
@@ -153,9 +192,12 @@ export default function PrototypeShowcaseSection() {
           {prototypes.map((prototype) => (
             <div
               key={prototype.id}
-              className="group relative bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20"
+              className={`prototype-card group relative bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700/50 transition-all duration-300
+                hover:border-blue-500/50 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20
+                ${touchedPrototype === prototype.id ? 'border-blue-500/50 scale-105 shadow-2xl shadow-blue-500/20' : ''}`}
               onMouseEnter={() => handleMouseEnter(prototype)}
               onMouseLeave={() => handleMouseLeave(prototype)}
+              onTouchStart={(e) => { if (isTouchDevice) { e.stopPropagation(); setTouchedPrototype(prototype.id); } }}
             >
               {/* Image Container */}
               <div className="relative aspect-video overflow-hidden">
@@ -169,8 +211,8 @@ export default function PrototypeShowcaseSection() {
                         alt={`${prototype.title} - ${index + 1}`}
                         fill
                         className={`object-cover transition-all duration-500 group-hover:scale-110 absolute inset-0 ${
-                          index === (currentImageIndex[prototype.id] || 0) ? 'opacity-100' : 'opacity-0'
-                        }`}
+                           (index === (currentImageIndex[prototype.id] || 0) && (touchedPrototype === prototype.id)) ? 'opacity-100 scale-110' : ''
+                         } ${index === (currentImageIndex[prototype.id] || 0) ? 'opacity-100' : 'opacity-0'} ${touchedPrototype === prototype.id ? 'scale-110' : ''}`}
                       />
                     ))}
                   </div>
@@ -181,13 +223,13 @@ export default function PrototypeShowcaseSection() {
                       src={prototype.image}
                       alt={`${prototype.title} - Main`}
                       fill
-                      className="object-cover transition-all duration-500 group-hover:opacity-0 group-hover:scale-110"
+                      className={`object-cover transition-all duration-500 group-hover:opacity-0 group-hover:scale-110 ${touchedPrototype === prototype.id ? 'opacity-0 scale-110' : ''}`}
                     />
                     <Image
                       src={prototype.secondaryImage}
                       alt={`${prototype.title} - Enhanced`}
                       fill
-                      className="object-cover transition-all duration-500 opacity-0 group-hover:opacity-100 group-hover:scale-110 absolute inset-0"
+                      className={`object-cover transition-all duration-500 opacity-0 group-hover:opacity-100 group-hover:scale-110 absolute inset-0 ${touchedPrototype === prototype.id ? 'opacity-100 scale-110' : ''}`}
                     />
                   </div>
                 ) : (
@@ -196,7 +238,7 @@ export default function PrototypeShowcaseSection() {
                     src={prototype.image}
                     alt={prototype.title}
                     fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-110"
+                    className={`object-cover transition-transform duration-300 group-hover:scale-110 ${touchedPrototype === prototype.id ? 'scale-110' : ''}` }
                   />
                 )}
                 
