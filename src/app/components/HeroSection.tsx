@@ -4,7 +4,7 @@ import Script from "next/script";
 
 export default function HeroSection() {
   const vantaRef = useRef<HTMLDivElement>(null);
-  const [vantaEffect, setVantaEffect] = useState<any>(null);
+  const [vantaEffect, setVantaEffect] = useState<ReturnType<typeof window.VANTA.NET> | null>(null);
 
   useEffect(() => {
     function initVanta() {
@@ -35,12 +35,10 @@ export default function HeroSection() {
         setTimeout(initVanta, 100);
       }
     }
-    const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
-      if (vantaEffect && typeof vantaEffect.destroy === "function") (vantaEffect as any).destroy();
-    };
+
     initVanta();
     return () => {
-      if (vantaEffect && typeof vantaEffect.destroy === "function") (vantaEffect as any).destroy();
+      if (vantaEffect && typeof vantaEffect.destroy === "function") vantaEffect.destroy();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

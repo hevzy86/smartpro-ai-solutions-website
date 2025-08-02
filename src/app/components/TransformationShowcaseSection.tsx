@@ -59,8 +59,8 @@ export default function TransformationShowcaseSection() {
               <div className="bg-[#23253c] rounded-lg p-4 border border-[#2c314f] md:col-span-2">
                 <h4 className="text-lg font-semibold text-white mb-2">Recent Achievement</h4>
                 <p className="text-sm text-gray-300">
-                  "Generated $2.4M in qualified leads for a SaaS client in Q4 2023, 
-                  with a 300% ROI compared to their previous human agent setup."
+                  &quot;Generated $2.4M in qualified leads for a SaaS client in Q4 2023, 
+                  with a 300% ROI compared to their previous human agent setup.&quot;
                 </p>
               </div>
             </div>
