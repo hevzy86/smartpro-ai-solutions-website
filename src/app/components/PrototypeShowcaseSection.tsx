@@ -75,30 +75,93 @@ const prototypes: Prototype[] = [
 export default function PrototypeShowcaseSection() {
   const [touchedPrototype, setTouchedPrototype] = useState<string | null>(null);
   const [isTouchDevice, setIsTouchDevice] = useState<boolean>(false);
+  const [hasMouse, setHasMouse] = useState<boolean>(false);
+  const lastPointerType = useRef<'mouse' | 'touch' | null>(null);
 
-  // Dynamically detect touch device and update on resize/orientation change
+  // Hybrid detection: listen for pointer events and window changes
   useEffect(() => {
-    function updateIsTouch() {
-      setIsTouchDevice(
-        typeof window !== 'undefined' &&
-        ('ontouchstart' in window || window.matchMedia('(pointer: coarse)').matches)
-      );
+    function detectPointerType(e: PointerEvent) {
+      if (e.pointerType === 'mouse') {
+        setHasMouse(true);
+        setIsTouchDevice(false);
+        lastPointerType.current = 'mouse';
+      } else if (e.pointerType === 'touch') {
+        setHasMouse(false);
+        setIsTouchDevice(true);
+        lastPointerType.current = 'touch';
+      }
     }
-    updateIsTouch();
-    window.addEventListener('resize', updateIsTouch);
-    window.addEventListener('orientationchange', updateIsTouch);
-    window.addEventListener('pointerdown', updateIsTouch);
+    function detectMouseMove() {
+      setHasMouse(true);
+      setIsTouchDevice(false);
+      lastPointerType.current = 'mouse';
+      window.removeEventListener('mousemove', detectMouseMove);
+    }
+    function detectTouchStart() {
+      setHasMouse(false);
+      setIsTouchDevice(true);
+      lastPointerType.current = 'touch';
+      window.removeEventListener('touchstart', detectTouchStart);
+    }
+    // Initial pointer type
+    if (typeof window !== 'undefined') {
+      const isCoarse = window.matchMedia('(pointer: coarse)').matches;
+      setIsTouchDevice(isCoarse);
+      setHasMouse(!isCoarse);
+    }
+    window.addEventListener('pointerdown', detectPointerType);
+    window.addEventListener('mousemove', detectMouseMove, { once: true });
+    window.addEventListener('touchstart', detectTouchStart, { once: true });
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
+    function handleResize() {
+      const isCoarse = window.matchMedia('(pointer: coarse)').matches;
+      if (isCoarse !== isTouchDevice) {
+        // Force full reload to reset all states and browser pointer logic
+        // Try to unregister all service workers
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            for(let registration of registrations) {
+              registration.unregister();
+            }
+          });
+        }
+        // Clear Cache API
+        if ('caches' in window) {
+          caches.keys().then(function(names) {
+            for (let name of names) caches.delete(name);
+          });
+        }
+        // Ensure scroll to top
+        if ('scrollRestoration' in window.history) {
+          window.history.scrollRestoration = 'manual';
+        }
+        // Add cache-busting param and reload
+        window.location.replace(window.location.pathname + '?reload=' + Date.now());
+        // Optionally, if reload does not help, show alert after reload
+        setTimeout(() => {
+          alert('Если после автоматической перезагрузки сайт всё ещё работает некорректно, пожалуйста, вручную нажмите Shift+Reload (или Ctrl+F5) для полного сброса кэша.');
+        }, 2000);
+      }
+    }
     return () => {
-      window.removeEventListener('resize', updateIsTouch);
-      window.removeEventListener('orientationchange', updateIsTouch);
-      window.removeEventListener('pointerdown', updateIsTouch);
+      window.removeEventListener('pointerdown', detectPointerType);
+      window.removeEventListener('mousemove', detectMouseMove);
+      window.removeEventListener('touchstart', detectTouchStart);
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
     };
-  }, []);
-
-  // Clear touch state when switching to desktop
-  useEffect(() => {
-    if (!isTouchDevice) setTouchedPrototype(null);
   }, [isTouchDevice]);
+
+  // Always reset states on device mode change
+  useEffect(() => {
+    setTouchedPrototype(null);
+    setHoveredPrototype(null);
+    // On switching to desktop, reset all image indexes to 0 to prevent stuck animation
+    if (!isTouchDevice) {
+      setCurrentImageIndex({});
+    }
+  }, [isTouchDevice, hasMouse]);
 
   useEffect(() => {
     if (!isTouchDevice) return;
@@ -215,8 +278,8 @@ export default function PrototypeShowcaseSection() {
                         alt={`${prototype.title} - ${index + 1}`}
                         fill
                         className={`object-cover transition-all duration-500 group-hover:scale-110 absolute inset-0 ${
-                           (index === (currentImageIndex[prototype.id] || 0) && (touchedPrototype === prototype.id)) ? 'opacity-100 scale-110' : ''
-                         } ${index === (currentImageIndex[prototype.id] || 0) ? 'opacity-100' : 'opacity-0'} ${touchedPrototype === prototype.id ? 'scale-110' : ''}`}
+                          (index === (currentImageIndex[prototype.id] || 0) && (touchedPrototype === prototype.id || hoveredPrototype === prototype.id)) ? 'opacity-100 scale-110' : ''
+                        } ${index === (currentImageIndex[prototype.id] || 0) ? 'opacity-100' : 'opacity-0'} ${touchedPrototype === prototype.id || hoveredPrototype === prototype.id ? 'scale-110' : ''}`}
                       />
                     ))}
                   </div>
