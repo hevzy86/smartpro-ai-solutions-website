@@ -1,7 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import NeonLogoIcon from "./NeonLogoIcon";
 import Script from "next/script";
-import "../../global";
 
 export default function HeroSection() {
   const vantaRef = useRef<HTMLDivElement>(null);
