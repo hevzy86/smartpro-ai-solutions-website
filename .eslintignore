@@ -1,0 +1,4 @@
+# Ignore minified third-party JS files
+src/app/components/vanta.net.min.js
+src/app/components/vanta.globe.min.js
+src/app/components/three.min.js
