@@ -35,7 +35,7 @@ const prototypes: Prototype[] = [
       "IoT-enabled elevator monitoring and predictive maintenance system",
     image: "/prototypes/elevatorCompany.png",
     secondaryImage: "/prototypes/elevatorCompany2.png",
-    videoUrl: "https://youtube.com/watch?v=example2",
+    videoUrl: "https://youtu.be/rUmPOAWevVM",
     technologies: ["IoT", "Predictive Analytics", "Dashboard"],
   },
   {
@@ -45,7 +45,7 @@ const prototypes: Prototype[] = [
       "Automated lead qualification and nurturing system with intelligent scoring",
     image: "/prototypes/leadGeneration3.png",
     images: [
-      "/prototypes/Lead Generation2.png",
+      "/prototypes/leadGeneration2.png",
       "/prototypes/leadGeneration3.png",
     ],
     videoUrl: "https://youtu.be/ZJ67gbyy81w",
@@ -57,7 +57,7 @@ const prototypes: Prototype[] = [
     description:
       "Complex business process automation with n8n integration and custom nodes",
     image: "/prototypes/n8n_Schema.png",
-    videoUrl: "https://youtube.com/watch?v=example4",
+    videoUrl: "https://youtu.be/q6DEN7rM34k",
     technologies: ["n8n", "API Integration", "Workflow"],
   },
   {
@@ -154,7 +154,7 @@ export default function PrototypeShowcaseSection() {
           navigator.serviceWorker
             .getRegistrations()
             .then(function (registrations) {
-              for(const registration of registrations) {
+              for (const registration of registrations) {
                 registration.unregister();
               }
             });
@@ -175,31 +175,34 @@ export default function PrototypeShowcaseSection() {
         );
         // Optionally, if reload does not help, show alert after reload
         setTimeout(() => {
-          const existing = document.getElementById('hard-reload-banner');
+          const existing = document.getElementById("hard-reload-banner");
           if (existing) return;
-          const banner = document.createElement('div');
-          banner.id = 'hard-reload-banner';
-          banner.style.position = 'fixed';
-          banner.style.top = '0';
-          banner.style.left = '0';
-          banner.style.width = '100vw';
-          banner.style.background = 'linear-gradient(90deg,#1e293b 60%,#6366f1 100%)';
-          banner.style.color = '#fff';
-          banner.style.zIndex = '9999';
-          banner.style.padding = '18px 12px 18px 24px';
-          banner.style.fontSize = '1.1rem';
-          banner.style.fontWeight = '600';
-          banner.style.display = 'flex';
-          banner.style.justifyContent = 'space-between';
-          banner.style.alignItems = 'center';
+          const banner = document.createElement("div");
+          banner.id = "hard-reload-banner";
+          banner.style.position = "fixed";
+          banner.style.top = "0";
+          banner.style.left = "0";
+          banner.style.width = "100vw";
+          banner.style.background =
+            "linear-gradient(90deg,#1e293b 60%,#6366f1 100%)";
+          banner.style.color = "#fff";
+          banner.style.zIndex = "9999";
+          banner.style.padding = "18px 12px 18px 24px";
+          banner.style.fontSize = "1.1rem";
+          banner.style.fontWeight = "600";
+          banner.style.display = "flex";
+          banner.style.justifyContent = "space-between";
+          banner.style.alignItems = "center";
           banner.innerHTML = `
             <span>Если после автоматической перезагрузки сайт всё ещё работает некорректно, <b>пожалуйста, вручную нажмите Shift+Reload (или Ctrl+F5)</b> для полного сброса кэша.</span>
             <button id="close-hard-reload-banner" style="margin-left:32px;padding:6px 16px;background:#334155;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:1rem;font-weight:600;">Закрыть</button>
           `;
           document.body.appendChild(banner);
-          document.getElementById('close-hard-reload-banner')?.addEventListener('click', () => {
-            banner.remove();
-          });
+          document
+            .getElementById("close-hard-reload-banner")
+            ?.addEventListener("click", () => {
+              banner.remove();
+            });
         }, 2000);
       }
     }
