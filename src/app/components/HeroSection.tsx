@@ -3,7 +3,9 @@ import Script from "next/script";
 
 export default function HeroSection() {
   const vantaRef = useRef<HTMLDivElement>(null);
-  const [vantaEffect, setVantaEffect] = useState<ReturnType<typeof window.VANTA.NET> | null>(null);
+  const [vantaEffect, setVantaEffect] = useState<ReturnType<
+    typeof window.VANTA.NET
+  > | null>(null);
 
   useEffect(() => {
     function initVanta() {
@@ -37,7 +39,8 @@ export default function HeroSection() {
 
     initVanta();
     return () => {
-      if (vantaEffect && typeof vantaEffect.destroy === "function") vantaEffect.destroy();
+      if (vantaEffect && typeof vantaEffect.destroy === "function")
+        vantaEffect.destroy();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -48,8 +51,14 @@ export default function HeroSection() {
       style={{ zIndex: 1, backgroundColor: "#23153c" }}
     >
       {/* Vanta.NET Animated Grid Background */}
-      <Script src="/three.min.js" strategy="beforeInteractive" />
-      <Script src="/vanta.net.min.js" strategy="beforeInteractive" />
+      <Script
+        src="/three.min.js"
+        strategy="beforeInteractive"
+      />
+      <Script
+        src="/vanta.net.min.js"
+        strategy="beforeInteractive"
+      />
       <div
         id="vanta-hero"
         ref={vantaRef}
@@ -65,13 +74,18 @@ export default function HeroSection() {
         <div className="text-lg sm:text-2xl text-center max-w-2xl mb-8 text-gray-200 flex flex-col gap-2">
           <span>
             AI solutions work{" "}
-            <span className="text-yellow-300 font-bold drop-shadow-[0_2px_8px_rgba(250,204,21,0.7)]">24/7</span>, never quit, never make mistakes, and<br />
+            <span className="text-yellow-300 font-bold drop-shadow-[0_2px_8px_rgba(250,204,21,0.7)]">
+              24/7
+            </span>
+            , never quit, never make mistakes, and
+            <br />
             dramatically reduce your{" "}
             <span className="text-green-400 font-bold">support expenses</span>.
           </span>
           <span>
             They handle{" "}
-            <span className="text-purple-400 font-bold">repetitive tasks</span>{" "}for you — so your team can focus on what matters.
+            <span className="text-purple-400 font-bold">repetitive tasks</span>{" "}
+            for you — so your team can focus on what matters.
           </span>
           <span className="text-cyan-400 font-bold">
             Start saving today — bring AI into your business.
