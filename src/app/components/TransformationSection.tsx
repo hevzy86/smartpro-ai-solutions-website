@@ -1,12 +1,13 @@
-
 export {};
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 import Script from "next/script";
 
 export default function TransformationSection() {
   const vantaRef = useRef<HTMLDivElement>(null);
-  const [vantaEffect, setVantaEffect] = useState<{ destroy: () => void } | null>(null);
+  const [vantaEffect, setVantaEffect] = useState<{
+    destroy: () => void;
+  } | null>(null);
 
   useEffect(() => {
     function initVanta() {
@@ -95,9 +96,9 @@ export default function TransformationSection() {
                   <span className="font-bold text-white">3+ Years</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-300">Expertise:</span>{" "}
+                  <span className="text-gray-300">Expertise: </span>
                   <span className="font-bold text-white">
-                    Web & Mobile Apps, SaaS, AI Integrations, Automation
+                    Web & Mobile Apps, SaaS, AI Integrations, Automations
                   </span>
                 </div>
                 <div className="flex justify-between">

@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 
 export default function Header() {
@@ -16,40 +15,54 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo/Brand */}
           <div className="flex items-center gap-2 select-none">
-  <img
-    src="/smartPro4.png"
-    alt="Smart Pro Solutions Logo"
-    className="h-[54px] w-[100px] object-contain p-0 m-0"
-    style={{ background: 'transparent', aspectRatio: '100/54', padding: 0, margin: 0, objectFit: 'contain' }}
-    draggable="false"
-  />
-  <span className="text-2xl font-bold bg-gradient-to-r from-white via-purple-400 to-blue-400 bg-clip-text text-transparent">
-    Smart <span className="font-extrabold">Pro Solutions</span>
-  </span>
-</div>
+            <img
+              src="/smartPro4.png"
+              alt="Smart Pro Solutions Logo"
+              className="h-[54px] w-[100px] object-contain p-0 m-0"
+              style={{
+                background: "transparent",
+                aspectRatio: "100/54",
+                padding: 0,
+                margin: 0,
+                objectFit: "contain",
+              }}
+              draggable="false"
+            />
+            <span className="text-2xl font-bold bg-gradient-to-r from-white via-purple-400 to-blue-400 bg-clip-text text-transparent">
+              Smart <span className="font-extrabold">Pro Solutions</span>
+            </span>
+          </div>
 
           {/* Navigation Links */}
           <nav className="hidden md:flex space-x-8">
             <a
               href="#"
               className="text-gray-300 hover:text-white transition-colors duration-200"
-              onClick={e => { e.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'}); }}
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
             >
               On Top
             </a>
             <a
-              href="#services"
-              className="text-gray-300 hover:text-white transition-colors duration-200"
+              href="#prototypes-showcase"
+              className="text-gray-300 hover:text-white hover:underline transition"
+              onClick={(e) => {
+                e.preventDefault();
+                const section = document.getElementById("prototypes-showcase");
+                if (section) section.scrollIntoView({ behavior: "smooth" });
+              }}
             >
               Solutions
             </a>
             <a
               href="#footer"
               className="text-gray-300 hover:text-white transition-colors duration-200"
-              onClick={e => {
+              onClick={(e) => {
                 e.preventDefault();
-                const footer = document.getElementById('footer');
-                if (footer) footer.scrollIntoView({ behavior: 'smooth' });
+                const footer = document.getElementById("footer");
+                if (footer) footer.scrollIntoView({ behavior: "smooth" });
               }}
             >
               Contact Us
@@ -80,17 +93,53 @@ export default function Header() {
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button className="group flex flex-col justify-center items-center w-12 h-12 p-0 bg-transparent border-none focus:outline-none" onClick={()=>setMobileMenuOpen(v=>!v)}>
+            <button
+              className="group flex flex-col justify-center items-center w-12 h-12 p-0 bg-transparent border-none focus:outline-none"
+              onClick={() => setMobileMenuOpen((v) => !v)}
+            >
               <div className="w-9 h-1.5 mb-1 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300"></div>
               <div className="w-9 h-1.5 mb-1 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300"></div>
               <div className="w-9 h-1.5 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300"></div>
             </button>
             {mobileMenuOpen && (
               <div className="absolute top-16 right-4 bg-[#23253c] rounded-xl shadow-lg p-6 flex flex-col gap-4 z-50 w-[80vw] max-w-xs">
-                <a href="#" onClick={e=>{e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});setMobileMenuOpen(false);}} className="text-gray-300 hover:text-white">On Top</a>
-                <a href="#services" onClick={()=>setMobileMenuOpen(false)} className="text-gray-300 hover:text-white">Solutions</a>
-                <a href="#footer" onClick={e=>{e.preventDefault();const footer=document.getElementById('footer');if(footer)footer.scrollIntoView({behavior:'smooth'});setMobileMenuOpen(false);}} className="text-gray-300 hover:text-white">Contact Us</a>
-                <a href="#faq" onClick={()=>setMobileMenuOpen(false)} className="text-gray-300 hover:text-white">FAQ</a>
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    setMobileMenuOpen(false);
+                  }}
+                  className="text-gray-300 hover:text-white"
+                >
+                  On Top
+                </a>
+                <a
+                  href="#services"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-gray-300 hover:text-white"
+                >
+                  Solutions
+                </a>
+                <a
+                  href="#footer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const footer = document.getElementById("footer");
+                    if (footer) footer.scrollIntoView({ behavior: "smooth" });
+                    setMobileMenuOpen(false);
+                  }}
+                  className="text-gray-300 hover:text-white"
+                >
+                  Contact Us
+                </a>
+                <a
+                  href="#faq"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-gray-300 hover:text-white"
+                >
+                  FAQ
+                </a>
               </div>
             )}
           </div>
