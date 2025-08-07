@@ -104,16 +104,16 @@ export default function FooterSection() {
               AI Solutions
             </a>
             <a
-              href="#"
+              href="#services"
               className="text-gray-300 hover:text-white hover:underline transition"
             >
-              On Top
+              Our Services
             </a>
             <a
               href="#"
               className="text-gray-300 hover:text-white hover:underline transition"
             >
-              Privacy Policy
+              On Top
             </a>
           </nav>
         </div>
