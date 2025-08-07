@@ -11,7 +11,7 @@ export default function Head() {
       <meta property="og:type" content="website" />
       <meta property="og:title" content="SmartPro AI Solutions — AI Voice & Digital Agents for Business Automation" />
       <meta property="og:description" content="SmartPro AI Solutions: Voice and digital AI agents for business automation, cost reduction, and efficiency boost. Try a free demo!" />
-      <meta property="og:image" content="/og-image.png" />
+      <meta property="og:image" content="https://smartproaisolutions.io/og-image.png" />
       <meta property="og:url" content="https://smartproaisolutions.io/" />
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
