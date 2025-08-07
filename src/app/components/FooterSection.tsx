@@ -77,6 +77,19 @@ export default function FooterSection() {
                 unoptimized
               />
             </a>
+            <a
+              href="mailto:smartproai.solutions@gmail.com"
+              aria-label="Email"
+            >
+              <Image
+                src="/icons/socials/gmail.png"
+                alt="Email"
+                width={36}
+                height={36}
+                className="hover:scale-110 transition-transform duration-200"
+                unoptimized
+              />
+            </a>
           </div>
           <nav className="flex gap-6 justify-center mt-2 sm:mt-0 order-2 sm:order-3 mr-0 sm:mr-32 lg:mr-40 xl:mr-52 2xl:mr-64">
             <a
