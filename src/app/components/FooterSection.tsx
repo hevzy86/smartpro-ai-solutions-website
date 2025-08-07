@@ -20,7 +20,7 @@ export default function FooterSection() {
           </span>
           <div className="flex gap-6 justify-center order-3 sm:order-2">
             <a
-              href="https://www.linkedin.com/company/108030490/admin/dashboard/"
+              href="https://www.linkedin.com/company/108030490/admin/page-posts/published/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -65,7 +65,7 @@ export default function FooterSection() {
               />
             </a>
             <a
-              href="https://www.facebook.com/"
+              href="https://www.facebook.com/profile.php?id=61578448147179"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
