@@ -10,7 +10,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#1a1a2e] bg-opacity-95 backdrop-blur-sm border-b border-[#262a40]">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur border-b border-[#262a40]">
       <div className="max-w-7xl mx-auto px-4 sm:px-4 md:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Brand */}
@@ -28,7 +28,7 @@ export default function Header() {
               }}
               draggable="false"
             />
-            <span className="text-2xl font-bold bg-gradient-to-r from-white via-purple-400 to-blue-400 bg-clip-text text-transparent">
+            <span className="text-2xl font-bold text-white">
               Smart <span className="font-extrabold">Pro Solutions</span>
             </span>
           </div>
@@ -37,7 +37,7 @@ export default function Header() {
           <nav className="hidden md:flex space-x-8">
             <a
               href="#"
-              className="text-gray-300 hover:text-white transition-colors duration-200"
+              className="text-white hover:text-blue-400 transition-colors duration-200"
               onClick={(e) => {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: "smooth" });
@@ -47,7 +47,7 @@ export default function Header() {
             </a>
             <a
               href="#prototypes-showcase"
-              className="text-gray-300 hover:text-white hover:underline transition"
+              className="text-white hover:text-blue-400 hover:underline transition"
               onClick={(e) => {
                 e.preventDefault();
                 const section = document.getElementById("prototypes-showcase");
@@ -58,7 +58,7 @@ export default function Header() {
             </a>
             <a
               href="#footer"
-              className="text-gray-300 hover:text-white transition-colors duration-200"
+              className="text-white hover:text-blue-400 transition-colors duration-200"
               onClick={(e) => {
                 e.preventDefault();
                 const footer = document.getElementById("footer");
@@ -69,7 +69,7 @@ export default function Header() {
             </a>
             <a
               href="#faq"
-              className="text-gray-300 hover:text-white transition-colors duration-200"
+              className="text-white hover:text-blue-400 transition-colors duration-200"
             >
               FAQ
             </a>
@@ -110,14 +110,14 @@ export default function Header() {
                     window.scrollTo({ top: 0, behavior: "smooth" });
                     setMobileMenuOpen(false);
                   }}
-                  className="text-gray-300 hover:text-white"
+                  className="text-white hover:text-blue-400"
                 >
                   On Top
                 </a>
                 <a
                   href="#services"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-gray-300 hover:text-white"
+                  className="text-white hover:text-blue-400"
                 >
                   Solutions
                 </a>
@@ -129,14 +129,14 @@ export default function Header() {
                     if (footer) footer.scrollIntoView({ behavior: "smooth" });
                     setMobileMenuOpen(false);
                   }}
-                  className="text-gray-300 hover:text-white"
+                  className="text-white hover:text-blue-400"
                 >
                   Contact Us
                 </a>
                 <a
                   href="#faq"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-gray-300 hover:text-white"
+                  className="text-white hover:text-blue-400"
                 >
                   FAQ
                 </a>

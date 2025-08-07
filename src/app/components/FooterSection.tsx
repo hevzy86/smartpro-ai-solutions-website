@@ -1,9 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
+import ContactModal from "./ContactModal";
 
 export default function FooterSection() {
+  const [isContactOpen, setContactOpen] = useState(false);
   return (
     <footer
       id="footer"
@@ -77,9 +79,11 @@ export default function FooterSection() {
                 unoptimized
               />
             </a>
-            <a
-              href="mailto:smartproai.solutions@gmail.com"
+            <button
+              type="button"
               aria-label="Email"
+              onClick={() => setContactOpen(true)}
+              className="focus:outline-none"
             >
               <Image
                 src="/icons/socials/gmail.png"
@@ -89,7 +93,7 @@ export default function FooterSection() {
                 className="hover:scale-110 transition-transform duration-200"
                 unoptimized
               />
-            </a>
+            </button>
           </div>
           <nav className="flex gap-6 justify-center mt-2 sm:mt-0 order-2 sm:order-3 mr-0 sm:mr-32 lg:mr-40 xl:mr-52 2xl:mr-64">
             <a
@@ -114,6 +118,9 @@ export default function FooterSection() {
           </nav>
         </div>
       </div>
+      {isContactOpen && (
+        <ContactModal isOpen={isContactOpen} onClose={() => setContactOpen(false)} />
+      )}
     </footer>
   );
 }
