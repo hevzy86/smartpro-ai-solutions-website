@@ -38,7 +38,15 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    // Type guard for Error
+    let errMsg = "Unknown error";
+    if (error instanceof Error) {
+      errMsg = error.message;
+    } else if (typeof error === "string") {
+      errMsg = error;
+    }
+
     // Логируем ошибку в консоль Vercel
     console.error("CONTACT API ERROR:", error, {
       env: {
@@ -49,7 +57,7 @@ export async function POST(req: NextRequest) {
     });
     // Возвращаем ошибку в ответе (для дебага, потом убери)
     return NextResponse.json(
-      { error: "Internal Server Error", details: error?.message || error?.toString() },
+      { error: "Internal Server Error", details: errMsg },
       { status: 500 }
     );
   }
