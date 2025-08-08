@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { useTranslation } from 'react-i18next';
 
 interface Prototype {
   id: string;
@@ -13,12 +14,9 @@ interface Prototype {
   technologies: string[];
 }
 
-const prototypes: Prototype[] = [
+const prototypes: Partial<Prototype>[] = [
   {
     id: "ai-medical",
-    title: "AI Medical Assistant",
-    description:
-      "Intelligent medical consultation system with symptom analysis and treatment recommendations",
     image: "/prototypes/ai_medical.png",
     images: [
       "/prototypes/ai_medical.png?v=2",
@@ -30,9 +28,6 @@ const prototypes: Prototype[] = [
   },
   {
     id: "elevator-company",
-    title: "Smart Elevator Management",
-    description:
-      "IoT-enabled elevator monitoring and predictive maintenance system",
     image: "/prototypes/elevatorCompany.png",
     secondaryImage: "/prototypes/elevatorCompany2.png",
     videoUrl: "https://youtu.be/rUmPOAWevVM",
@@ -40,9 +35,6 @@ const prototypes: Prototype[] = [
   },
   {
     id: "lead-generation",
-    title: "AI Lead Generation",
-    description:
-      "Automated lead qualification and nurturing system with intelligent scoring",
     image: "/prototypes/leadGeneration3.png",
     images: [
       "/prototypes/leadGeneration2.png",
@@ -53,18 +45,12 @@ const prototypes: Prototype[] = [
   },
   {
     id: "n8n-schema",
-    title: "Workflow Automation",
-    description:
-      "Complex business process automation with n8n integration and custom nodes",
     image: "/prototypes/n8n_Schema.png",
     videoUrl: "https://youtu.be/q6DEN7rM34k",
     technologies: ["n8n", "API Integration", "Workflow"],
   },
   {
     id: "smart-bite",
-    title: "SmartBite AI",
-    description:
-      "Comprehensive nutrition app with AI recommendations, meal planning, and dietary goal optimization",
     image: "/prototypes/SmartBiteAI4.png",
     images: [
       "/prototypes/SmartBiteAI4.png",
@@ -82,9 +68,6 @@ const prototypes: Prototype[] = [
   },
   {
     id: "ai-persona-baby-podcast",
-    title: "AI Persona Baby Podcast",
-    description:
-      "Revolutionary AI-powered podcast platform that transforms any person into a personalized voice host and distributes content across all social media platforms from one dashboard",
     image: "/prototypes/babypodcast2.png",
     images: [
       "/prototypes/babypodcast2.png",
@@ -104,6 +87,7 @@ const prototypes: Prototype[] = [
 ];
 
 export default function PrototypeShowcaseSection() {
+  const { t } = useTranslation('common');
   const [touchedPrototype, setTouchedPrototype] = useState<string | null>(null);
   const [isTouchDevice, setIsTouchDevice] = useState<boolean>(false);
   const [hasMouse, setHasMouse] = useState<boolean>(false);
@@ -237,16 +221,14 @@ export default function PrototypeShowcaseSection() {
     return () => document.removeEventListener("touchstart", handleTouch);
   }, [isTouchDevice]);
 
-  const [selectedPrototype, setSelectedPrototype] = useState<Prototype | null>(
-    null
-  );
+  const [selectedPrototype, setSelectedPrototype] = useState<Partial<Prototype> | null>(null);
   const [hoveredPrototype, setHoveredPrototype] = useState<string | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState<{
     [key: string]: number;
   }>({});
   const intervalRefs = useRef<{ [key: string]: NodeJS.Timeout }>({});
 
-  const openVideo = (prototype: Prototype) => {
+  const openVideo = (prototype: Partial<Prototype>) => {
     if (prototype.videoUrl) {
       window.open(prototype.videoUrl, "_blank");
     }
@@ -279,14 +261,14 @@ export default function PrototypeShowcaseSection() {
     setCurrentImageIndex((prev) => ({ ...prev, [prototypeId]: 0 }));
   };
 
-  const handleMouseEnter = (prototype: Prototype) => {
-    setHoveredPrototype(prototype.id);
+  const handleMouseEnter = (prototype: Partial<Prototype>) => {
+    setHoveredPrototype(prototype.id || null);
     if (prototype.images && prototype.images.length > 1) {
       startSlideshow(prototype.id, prototype.images);
     }
   };
 
-  const handleMouseLeave = (prototype: Prototype) => {
+  const handleMouseLeave = (prototype: Partial<Prototype>) => {
     setHoveredPrototype(null);
     if (prototype.images && prototype.images.length > 1) {
       stopSlideshow(prototype.id);
@@ -336,12 +318,12 @@ export default function PrototypeShowcaseSection() {
                     ? "border-blue-500/50 scale-105 shadow-2xl shadow-blue-500/20"
                     : ""
                 }`}
-              onMouseEnter={() => handleMouseEnter(prototype)}
-              onMouseLeave={() => handleMouseLeave(prototype)}
+              onMouseEnter={() => prototype && handleMouseEnter(prototype)}
+              onMouseLeave={() => prototype && handleMouseLeave(prototype)}
               onTouchStart={(e) => {
                 if (isTouchDevice) {
                   e.stopPropagation();
-                  setTouchedPrototype(prototype.id);
+                  setTouchedPrototype(prototype.id || null);
                 }
               }}
             >
@@ -350,20 +332,20 @@ export default function PrototypeShowcaseSection() {
                 {prototype.images && prototype.images.length > 1 ? (
                   // Multiple images slideshow (AI Medical Assistant)
                   <div className="relative h-full">
-                    {prototype.images.map((img, index) => (
+                    {prototype.images && prototype.images.map && prototype.images.map((img, index) => (
                       <Image
                         key={index}
-                        src={img}
-                        alt={`${prototype.title} - ${index + 1}`}
+                        src={img || ''}
+                        alt={`${t(`prototype_${prototype.id ? prototype.id : ''}_title`)} - ${index + 1}`}
                         fill
                         className={`object-cover transition-all duration-500 group-hover:scale-110 absolute inset-0 ${
-                          index === (currentImageIndex[prototype.id] || 0) &&
+                          prototype.id && index === (currentImageIndex[prototype.id] || 0) &&
                           (touchedPrototype === prototype.id ||
                             hoveredPrototype === prototype.id)
                             ? "opacity-100 scale-110"
                             : ""
                         } ${
-                          index === (currentImageIndex[prototype.id] || 0)
+                          prototype.id && index === (currentImageIndex[prototype.id] || 0)
                             ? "opacity-100"
                             : "opacity-0"
                         } ${
@@ -380,7 +362,7 @@ export default function PrototypeShowcaseSection() {
                   <div className="relative h-full">
                     <Image
                       src={prototype.image}
-                      alt={`${prototype.title} - Main`}
+                      alt={`${t(`prototype_${prototype.id ? prototype.id : ''}_title`)} - Main`}
                       fill
                       className={`object-cover transition-all duration-500 group-hover:opacity-0 group-hover:scale-110 ${
                         touchedPrototype === prototype.id
@@ -389,8 +371,8 @@ export default function PrototypeShowcaseSection() {
                       }`}
                     />
                     <Image
-                      src={prototype.secondaryImage}
-                      alt={`${prototype.title} - Enhanced`}
+                      src={prototype.secondaryImage ? prototype.secondaryImage : ''}
+                      alt={`${t(`prototype_${prototype.id ? prototype.id : ''}_title`)} - Enhanced`}
                       fill
                       className={`object-cover transition-all duration-500 opacity-0 group-hover:opacity-100 group-hover:scale-110 absolute inset-0 ${
                         touchedPrototype === prototype.id
@@ -403,7 +385,7 @@ export default function PrototypeShowcaseSection() {
                   // Single image layout
                   <Image
                     src={prototype.image}
-                    alt={prototype.title}
+                    alt={t(`prototype_${prototype.id ? prototype.id : ''}_title`)}
                     fill
                     className={`object-cover transition-transform duration-300 group-hover:scale-110 ${
                       touchedPrototype === prototype.id ? "scale-110" : ""
@@ -434,15 +416,15 @@ export default function PrototypeShowcaseSection() {
               {/* Content */}
               <div className="p-6">
                 <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
-                  {prototype.title}
+                  {t(`prototype_${prototype.id}_title`)}
                 </h3>
                 <p className="text-gray-400 text-sm mb-4 line-clamp-2">
-                  {prototype.description}
+                  {t(`prototype_${prototype.id}_desc`)}
                 </p>
 
                 {/* Technologies */}
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {prototype.technologies.map((tech) => (
+                  {prototype.technologies && prototype.technologies.map((tech) => (
                     <span
                       key={tech}
                       className="px-2 py-1 text-xs bg-blue-500/20 text-blue-300 rounded-full border border-blue-500/30"
@@ -480,7 +462,7 @@ export default function PrototypeShowcaseSection() {
             <div className="p-6">
               <div className="flex justify-between items-start mb-4">
                 <h3 className="text-2xl font-bold text-white">
-                  {selectedPrototype.title}
+                  {t(`prototype_${selectedPrototype.id}_title`)}
                 </h3>
                 <button
                   onClick={closeModal}
@@ -509,15 +491,15 @@ export default function PrototypeShowcaseSection() {
                     <div className="relative flex-1">
                       <Image
                         src={selectedPrototype.image}
-                        alt={`${selectedPrototype.title} - Main`}
+                        alt={`${t(`prototype_${selectedPrototype && selectedPrototype.id ? selectedPrototype.id : ''}_title`)} - Main`}
                         fill
                         className="object-cover"
                       />
                     </div>
                     <div className="relative flex-1">
                       <Image
-                        src={selectedPrototype.secondaryImage}
-                        alt={`${selectedPrototype.title} - Enhanced`}
+                        src={selectedPrototype && selectedPrototype.secondaryImage ? selectedPrototype.secondaryImage : ''}
+                        alt={`${t(`prototype_${selectedPrototype && selectedPrototype.id ? selectedPrototype.id : ''}_title`)} - Enhanced`}
                         fill
                         className="object-cover"
                       />
@@ -527,7 +509,7 @@ export default function PrototypeShowcaseSection() {
                   // Single image layout in modal
                   <Image
                     src={selectedPrototype.image}
-                    alt={selectedPrototype.title}
+                    alt={t(`prototype_${selectedPrototype && selectedPrototype.id ? selectedPrototype.id : ''}_title`)}
                     fill
                     className="object-cover"
                   />
@@ -535,11 +517,11 @@ export default function PrototypeShowcaseSection() {
               </div>
 
               <p className="text-gray-300 mb-4">
-                {selectedPrototype.description}
+                {t(`prototype_${selectedPrototype.id}_desc`)}
               </p>
 
               <div className="flex flex-wrap gap-2 mb-6">
-                {selectedPrototype.technologies.map((tech) => (
+                {selectedPrototype && selectedPrototype.technologies && selectedPrototype.technologies.map((tech) => (
                   <span
                     key={tech}
                     className="px-3 py-1 text-sm bg-blue-500/20 text-blue-300 rounded-full border border-blue-500/30"

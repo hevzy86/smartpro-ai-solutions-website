@@ -19,7 +19,7 @@ export default function Header() {
           <div className="flex items-center gap-2 select-none">
             <img
               src="/smartPro4.png"
-              alt="Smart Pro Solutions Logo"
+              alt="SmartPro AI Solutions Logo"
               className="h-[54px] w-[100px] object-contain p-0 m-0"
               style={{
                 background: "transparent",
@@ -30,8 +30,8 @@ export default function Header() {
               }}
               draggable="false"
             />
-            <span className="text-2xl font-bold text-white">
-              Smart <span className="font-extrabold">Pro Solutions</span>
+            <span className="text-lg md:text-2xl font-bold text-white">
+              SmartPro <span className="font-extrabold">AI Solutions</span>
             </span>
           </div>
 
