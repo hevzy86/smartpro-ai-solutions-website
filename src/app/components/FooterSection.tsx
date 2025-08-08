@@ -4,7 +4,10 @@ import React, { useState } from "react";
 import Image from "next/image";
 import ContactModal from "./ContactModal";
 
+import { useTranslation } from 'react-i18next';
+
 export default function FooterSection() {
+  const { t } = useTranslation('common');
   const [isContactOpen, setContactOpen] = useState(false);
   return (
     <footer
@@ -15,8 +18,7 @@ export default function FooterSection() {
         <div className="w-full flex flex-col sm:flex-row justify-between items-center gap-4">
           <span className="text-gray-300 whitespace-nowrap order-1 sm:order-1">
             {" "}
-            {new Date().getFullYear()} SmartProAI Solutions. All Rights
-            Reserved.
+            {new Date().getFullYear()} SmartProAI Solutions. {t('footer_rights')}
           </span>
           <div className="flex gap-6 justify-center order-3 sm:order-2">
             <a
@@ -112,13 +114,13 @@ export default function FooterSection() {
               href="#services"
               className="text-gray-300 hover:text-white hover:underline transition"
             >
-              Our Services
+              {t('services')}
             </a>
             <a
               href="#"
               className="text-gray-300 hover:text-white hover:underline transition"
             >
-              On Top
+              {t('on_top')}
             </a>
           </nav>
         </div>

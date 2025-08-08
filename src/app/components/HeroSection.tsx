@@ -1,7 +1,9 @@
 import { useRef, useEffect, useState } from "react";
 import Script from "next/script";
+import { useTranslation } from 'react-i18next';
 
 export default function HeroSection() {
+  const { t } = useTranslation('common');
   const vantaRef = useRef<HTMLDivElement>(null);
   const [vantaEffect, setVantaEffect] = useState<ReturnType<
     typeof window.VANTA.NET
@@ -69,27 +71,28 @@ export default function HeroSection() {
         {/* New Headline & Subheadline */}
         {/* New Headline & Subheadline */}
         <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-center mb-6 leading-tight">
-          Transform Your Business with AI Innovation
+          {t('hero_title')}
         </h1>
         <div className="text-lg sm:text-2xl text-center max-w-2xl mb-8 text-gray-200 flex flex-col gap-2">
-          <span>
-            AI solutions work{" "}
-            <span className="text-yellow-300 font-bold drop-shadow-[0_2px_8px_rgba(250,204,21,0.7)]">
-              24/7
-            </span>
-            , never quit, never make mistakes, and
-            <br />
-            dramatically reduce your{" "}
-            <span className="text-green-400 font-bold">support expenses</span>.
-          </span>
-          <span>
-            They handle{" "}
-            <span className="text-purple-400 font-bold">repetitive tasks</span>{" "}
-            for you — so your team can focus on what matters.
-          </span>
-          <span className="text-cyan-400 font-bold">
-            Start saving today — bring AI into your business.
-          </span>
+          <div className="text-lg sm:text-2xl text-center max-w-2xl mb-8 text-gray-200 flex flex-col gap-2">
+  <span>
+    {t('hero_desc_2_part1')}
+    <span className="text-yellow-300 font-bold drop-shadow-[0_2px_8px_rgba(250,204,21,0.7)]">{t('hero_desc_2_24_7')}</span>
+    {t('hero_desc_2_part2')}
+    <br />
+    {t('hero_desc_2_part3')}
+    <span className="text-green-400 font-bold">{t('hero_desc_2_support')}</span>.
+  </span>
+  <span>
+    {t('hero_desc_3_part1')}
+    <span className="text-purple-400 font-bold">{t('hero_desc_3_tasks')}</span>
+    {t('hero_desc_3_part2')}
+  </span>
+  <span className="text-cyan-400 font-bold">
+    {t('hero_desc_4')}
+  </span>
+</div>
+          
         </div>
       </div>
     </section>

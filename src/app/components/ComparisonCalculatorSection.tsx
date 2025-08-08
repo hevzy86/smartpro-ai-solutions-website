@@ -1,57 +1,60 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 // Project type templates with default values
-const projectTemplates = {
-  'call-center': {
-    name: 'Call Center',
-    humanCost: 2000,
-    dialAttempts: 250,
-    answerRate: 30,
-    callDuration: 2,
-    workingDays: 22,
-    aiCostPerMinute: 0.15
-  },
-  'sales': {
-    name: 'Sales Outreach',
-    humanCost: 2500,
-    dialAttempts: 150,
-    answerRate: 25,
-    callDuration: 5,
-    workingDays: 22,
-    aiCostPerMinute: 0.20
-  },
-  'support': {
-    name: 'Customer Support',
-    humanCost: 1800,
-    dialAttempts: 100,
-    answerRate: 80,
-    callDuration: 8,
-    workingDays: 22,
-    aiCostPerMinute: 0.12
-  },
-  'appointment': {
-    name: 'Appointment Setting',
-    humanCost: 1500,
-    dialAttempts: 200,
-    answerRate: 35,
-    callDuration: 3,
-    workingDays: 22,
-    aiCostPerMinute: 0.18
-  },
-  'custom': {
-    name: 'Custom Project',
-    humanCost: 2000,
-    dialAttempts: 250,
-    answerRate: 30,
-    callDuration: 2,
-    workingDays: 22,
-    aiCostPerMinute: 0.15
-  }
-};
-
 export default function ComparisonCalculatorSection() {
+  const { t } = useTranslation('common');
+
+  const projectTemplates = {
+    'call-center': {
+      name: t('project_call_center'),
+      humanCost: 2000,
+      dialAttempts: 250,
+      answerRate: 30,
+      callDuration: 2,
+      workingDays: 22,
+      aiCostPerMinute: 0.15
+    },
+    'sales': {
+      name: t('project_sales'),
+      humanCost: 2500,
+      dialAttempts: 150,
+      answerRate: 25,
+      callDuration: 5,
+      workingDays: 22,
+      aiCostPerMinute: 0.20
+    },
+    'support': {
+      name: t('project_support'),
+      humanCost: 1800,
+      dialAttempts: 100,
+      answerRate: 80,
+      callDuration: 8,
+      workingDays: 22,
+      aiCostPerMinute: 0.12
+    },
+    'appointment': {
+      name: t('project_appointment'),
+      humanCost: 1500,
+      dialAttempts: 200,
+      answerRate: 35,
+      callDuration: 3,
+      workingDays: 22,
+      aiCostPerMinute: 0.18
+    },
+    'custom': {
+      name: t('project_custom'),
+      humanCost: 2000,
+      dialAttempts: 250,
+      answerRate: 30,
+      callDuration: 2,
+      workingDays: 22,
+      aiCostPerMinute: 0.15
+    }
+  };
+
   const [mounted, setMounted] = useState(false);
   const [projectType, setProjectType] = useState('call-center');
   const [humanCost, setHumanCost] = useState(2000);
@@ -104,18 +107,15 @@ export default function ComparisonCalculatorSection() {
       </section>
     );
   }
-
   return (
     <section id="comparison" className="w-full flex justify-center items-center py-16 px-2">
       <div className="w-full max-w-4xl bg-[#181c2f] bg-opacity-95 rounded-2xl shadow-2xl p-8 md:p-12 border border-[#262a40] relative">
         {/* Title */}
-        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-8">
-          HUMAN AGENTS <span className="text-green-400 drop-shadow-[0_2px_8px_rgba(34,197,94,0.7)]">vs AI AGENTS</span>
-        </h2>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-8" dangerouslySetInnerHTML={{ __html: t('calculator_title') }} />
         
         {/* Project Type Selector */}
         <div className="mb-8">
-          <label className="block text-sm font-semibold mb-3 text-center">Select Project Type</label>
+          <label className="block text-sm font-semibold mb-3 text-center">{t('select_project_type')}</label>
           <div className="flex flex-wrap justify-center gap-2">
             {Object.entries(projectTemplates).map(([key, template]) => (
               <button
@@ -136,7 +136,7 @@ export default function ComparisonCalculatorSection() {
         {/* Inputs */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
-            <label className="block text-sm font-semibold mb-2">Human Agent Monthly Cost ($)</label>
+            <label className="block text-sm font-semibold mb-2">{t('input_human_cost')}</label>
             <input 
               type="number" 
               value={humanCost}
@@ -145,7 +145,7 @@ export default function ComparisonCalculatorSection() {
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold mb-2">Dial Attempts per Day</label>
+            <label className="block text-sm font-semibold mb-2">{t('input_dial_attempts')}</label>
             <input 
               type="number" 
               value={dialAttempts}
@@ -154,7 +154,7 @@ export default function ComparisonCalculatorSection() {
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold mb-2">Answer Rate (%)</label>
+            <label className="block text-sm font-semibold mb-2">{t('input_answer_rate')}</label>
             <input 
               type="number" 
               value={answerRate}
@@ -163,7 +163,7 @@ export default function ComparisonCalculatorSection() {
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold mb-2">Avg. Call Duration (min)</label>
+            <label className="block text-sm font-semibold mb-2">{t('input_call_duration')}</label>
             <input 
               type="number" 
               value={callDuration}
@@ -172,7 +172,7 @@ export default function ComparisonCalculatorSection() {
             />
           </div>
           <div className="md:col-span-2">
-            <label className="block text-sm font-semibold mb-2">Working Days per Month</label>
+            <label className="block text-sm font-semibold mb-2">{t('input_working_days')}</label>
             <input 
               type="number" 
               value={workingDays}
@@ -189,10 +189,9 @@ export default function ComparisonCalculatorSection() {
             <div className="text-3xl font-bold text-red-400 mb-1">${results.humanTotal.toLocaleString()}</div>
             <div className="text-gray-300 mb-2">per month</div>
             <ul className="text-gray-400 text-sm list-disc list-inside space-y-1">
-              <li>Fixed monthly cost regardless of call volume</li>
-              <li>Limited scalability</li>
-              <li>Variable quality and script adherence</li>
-              <li>Human fatigue and turnover</li>
+              {(t('calc_human_bullets', { returnObjects: true }) as string[]).map((item, idx) => (
+              <li key={idx}>{item}</li>
+            ))}
             </ul>
           </div>
           {/* AI Agent Card */}
@@ -200,10 +199,9 @@ export default function ComparisonCalculatorSection() {
             <div className="text-3xl font-bold text-green-400 mb-1">${results.aiTotal.toLocaleString()}</div>
             <div className="text-gray-300 mb-2">per month</div>
             <ul className="text-gray-400 text-sm list-disc list-inside space-y-1">
-              <li>Pay only for actual talk time</li>
-              <li>Unlimited scaling capability</li>
-              <li>100% script consistency</li>
-              <li>24/7 availability with no fatigue</li>
+              {(t('calc_ai_bullets', { returnObjects: true }) as string[]).map((item, idx) => (
+              <li key={idx}>{item}</li>
+            ))}
             </ul>
           </div>
         </div>
@@ -211,12 +209,12 @@ export default function ComparisonCalculatorSection() {
         {/* Savings Display */}
         <div className="text-center bg-gradient-to-r from-purple-600 via-blue-600 to-green-600 rounded-xl p-6 text-white">
           <div className="text-2xl md:text-3xl font-bold mb-2">
-            ${results.savings.toLocaleString()} <span className="text-lg font-normal">Absolute Savings</span> | 
-            <span className="ml-2">{results.savingsPercent}%</span> <span className="text-lg font-normal">Cost Reduction</span>
+            ${results.savings.toLocaleString()} <span className="text-lg font-normal">{t('calc_savings_absolute')}</span> | 
+            <span className="ml-2">{results.savingsPercent}%</span> <span className="text-lg font-normal">{t('calc_savings_percent')}</span>
           </div>
-          <div className="text-lg mb-2">Annual Savings: ${(results.savings * 12).toLocaleString()}</div>
+          <div className="text-lg mb-2">{t('calc_annual_savings')}: ${(results.savings * 12).toLocaleString()}</div>
           <div className="text-sm mt-2 opacity-90">
-            Calculation Assumptions:
+            {t('calc_assumptions')}
           </div>
           <div className="text-xs mt-2 opacity-80 space-y-1">
             <div>• {dialAttempts.toLocaleString()} dial attempts per day ({(dialAttempts * workingDays).toLocaleString()} per month)</div>

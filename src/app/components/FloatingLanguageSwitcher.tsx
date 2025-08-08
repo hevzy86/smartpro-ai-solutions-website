@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import i18n from '../i18n';
 
 const LANGUAGES = [
   { code: "en", label: "EN" },
@@ -29,8 +30,10 @@ export default function FloatingLanguageSwitcher() {
   }, [open]);
 
   // Смена языка с сохранением query
+
   const handleSelect = (code: string) => {
     setOpen(false);
+    i18n.changeLanguage(code);
     const params = new URLSearchParams(Array.from(searchParams.entries()));
     params.set("lng", code);
     router.replace(`${pathname}?${params.toString()}`);

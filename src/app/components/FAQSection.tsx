@@ -1,61 +1,64 @@
 "use client";
 
+import { useTranslation } from 'react-i18next';
+
 export default function FAQSection() {
+  const { t } = useTranslation('common');
   return (
     <section id="faq" className="w-full flex justify-center items-center py-16 px-2">
       <div className="w-full max-w-4xl">
         <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-12 text-white">
-          FREQUENTLY ASKED <span className="text-green-400 drop-shadow-[0_2px_8px_rgba(34,197,94,0.7)]">QUESTIONS</span>
+          {t('faq')}
         </h2>
         
         <div className="space-y-4">
           <details className="group rounded-lg overflow-hidden text-white">
             <summary className="cursor-pointer px-6 py-4 font-semibold text-lg bg-purple-800/80 group-open:bg-purple-900 transition flex items-center justify-between">
-              How quickly can AI solutions be implemented?
+              {t('faq_q1')}
               <span className="ml-2 text-xl">▾</span>
             </summary>
             <div className="bg-[#181c2f] px-6 py-4 text-gray-200">
-              Most deployments are completed within 1–3 weeks, including custom model training, integration testing, and staff onboarding.
+              {t('faq_a1')}
             </div>
           </details>
           
           <details className="group rounded-lg overflow-hidden text-white">
             <summary className="cursor-pointer px-6 py-4 font-semibold text-lg bg-purple-800/80 group-open:bg-purple-900 transition flex items-center justify-between">
-              Will AI voice agents work with my existing systems?
+              {t('faq_q2')}
               <span className="ml-2 text-xl">▾</span>
             </summary>
             <div className="bg-[#181c2f] px-6 py-4 text-gray-200">
-              Yes! Our solutions are designed for seamless integration with your current CRM, helpdesk, or telephony systems. We provide custom API and workflow support.
+              {t('faq_a2')}
             </div>
           </details>
           
           <details className="group rounded-lg overflow-hidden text-white">
             <summary className="cursor-pointer px-6 py-4 font-semibold text-lg bg-purple-800/80 group-open:bg-purple-900 transition flex items-center justify-between">
-              How much can I save by switching to AI agents?
+              {t('faq_q3')}
               <span className="ml-2 text-xl">▾</span>
             </summary>
             <div className="bg-[#181c2f] px-6 py-4 text-gray-200">
-              Clients typically see up to 70% cost reduction compared to traditional call centers, with improved scalability and 24/7 coverage.
+              {t('faq_a3')}
             </div>
           </details>
           
           <details className="group rounded-lg overflow-hidden text-white">
             <summary className="cursor-pointer px-6 py-4 font-semibold text-lg bg-purple-800/80 group-open:bg-purple-900 transition flex items-center justify-between">
-              Is the AI able to handle complex or industry-specific conversations?
+              {t('faq_q4')}
               <span className="ml-2 text-xl">▾</span>
             </summary>
             <div className="bg-[#181c2f] px-6 py-4 text-gray-200">
-              Absolutely. Our AI is trained for your specific use case and can handle industry jargon, compliance requirements, and complex workflows.
+              {t('faq_a4')}
             </div>
           </details>
           
           <details className="group rounded-lg overflow-hidden text-white">
             <summary className="cursor-pointer px-6 py-4 font-semibold text-lg bg-purple-800/80 group-open:bg-purple-900 transition flex items-center justify-between">
-              What support do you provide after launch?
+              {t('faq_q5')}
               <span className="ml-2 text-xl">▾</span>
             </summary>
             <div className="bg-[#181c2f] px-6 py-4 text-gray-200">
-              We offer ongoing monitoring, optimization, and support to ensure your AI agents deliver the best results and adapt to your evolving needs.
+              {t('faq_a5')}
             </div>
           </details>
         </div>

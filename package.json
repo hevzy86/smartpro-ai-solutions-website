@@ -11,13 +11,13 @@
   "dependencies": {
     "@calcom/atoms": "^1.1.1-debug-dont-use",
     "@calcom/embed-react": "^1.5.3",
-    "i18next": "^25.3.2",
+    "i18next": "^23.16.8",
     "next": "15.4.4",
-    "next-i18next": "^15.4.2",
+    "next-i18next": "^14.0.3",
     "nodemailer": "^7.0.5",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "react-i18next": "^15.6.1",
+    "react-i18next": "^13.5.0",
     "three": "^0.178.0",
     "vanta": "^0.5.24"
   },

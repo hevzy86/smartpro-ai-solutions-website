@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import { useTranslation } from 'react-i18next';
 
 export default function ServicesSection() {
+  const { t } = useTranslation('common');
   return (
     <section
       id="services"
@@ -22,11 +24,11 @@ export default function ServicesSection() {
         </div>
         <h3 className="text-4xl font-extrabold text-center mb-3">
           <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-300 bg-clip-text text-transparent">
-            Our Services
+            {t('services')}
           </span>
         </h3>
         <p className="text-center text-gray-300 mb-14 max-w-2xl mx-auto">
-          We turn ideas into profitable products using cutting-edge technology.
+          {t('services_intro')}
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Card 1 */}
@@ -58,22 +60,21 @@ export default function ServicesSection() {
               </div>
             </div>
             <h3 className="text-white text-2xl font-bold mb-4">
-              AI-Powered Voice Agents
+              {t('services_card1_title')}
             </h3>
             <p className="text-gray-300 text-lg mb-4 font-medium">
-              Get a 24/7 AI receptionist for your business.
+              {t('services_card1_subtitle')}
             </p>
             <div className="flex-grow">
               <p className="text-gray-400 mb-8 leading-relaxed">
-                Smart voice agents that handle client calls, schedule
-                appointments, and answer questions automatically.
+                {t('services_card1_desc')}
               </p>
             </div>
             <ul className="text-green-300 font-medium space-y-2 list-disc list-outside ml-5 mt-auto">
-              <li>Automated Call Handling</li>
-              <li>Smart Scheduling</li>
-              <li>FAQ Management</li>
-              <li>Transcription Recording</li>
+              <li>{t('services_card1_point1')}</li>
+              <li>{t('services_card1_point2')}</li>
+              <li>{t('services_card1_point3')}</li>
+              <li>{t('services_card1_point4')}</li>
             </ul>
           </div>
           {/* Card 2 */}
@@ -102,22 +103,21 @@ export default function ServicesSection() {
               </div>
             </div>
             <h3 className="text-white text-2xl font-bold mb-4">
-              Lead Generation Automation
+              {t('services_card2_title')}
             </h3>
             <p className="text-gray-300 text-lg mb-4 font-medium">
-              Get high-quality leads on autopilot.
+              {t('services_card2_subtitle')}
             </p>
             <div className="flex-grow">
               <p className="text-gray-400 mb-8 leading-relaxed">
-                AI-powered systems that identify and engage potential clients
-                around the clock.
+                {t('services_card2_desc')}
               </p>
             </div>
             <ul className="text-yellow-300 font-medium space-y-2 list-disc list-outside ml-5 mt-auto">
-              <li>AI Lead Scoring</li>
-              <li>Personalized Outreach</li>
-              <li>Smart Follow-Ups</li>
-              <li>Business automation solutions - lead generation</li>
+              <li>{t('services_card2_point1')}</li>
+              <li>{t('services_card2_point2')}</li>
+              <li>{t('services_card2_point3')}</li>
+              <li>{t('services_card2_point4')}</li>
             </ul>
           </div>
           {/* Card 3 */}
@@ -145,24 +145,21 @@ export default function ServicesSection() {
               </div>
             </div>
             <h3 className="text-white text-2xl font-bold mb-4">
-              Workflow & Business Process Automation
+              {t('services_card3_title')}
             </h3>
             <p className="text-gray-300 text-lg mb-4 font-medium">
-              Automate repetitive tasks, documents, and internal workflows.
+              {t('services_card3_subtitle')}
             </p>
             <div className="flex-grow">
               <p className="text-gray-400 mb-8 leading-relaxed">
-                Custom solutions designed to eliminate manual work, reduce
-                costs, and scale operations effortlessly.
+                {t('services_card3_desc')}
               </p>
             </div>
             <ul className="text-blue-300 font-medium space-y-2 list-disc list-outside ml-5 mt-auto">
-              <li>Contract & document automation</li>
-              <li>Billing & approval workflows</li>
-              <li>Task and case management</li>
-              <li>
-                AI-powered tools for internal processes and customer interaction
-              </li>
+              <li>{t('services_card3_point1')}</li>
+              <li>{t('services_card3_point2')}</li>
+              <li>{t('services_card3_point3')}</li>
+              <li>{t('services_card3_point4')}</li>
             </ul>
           </div>
           {/* Card 4 */}
@@ -191,17 +188,21 @@ export default function ServicesSection() {
                 </svg>
               </div>
             </div>
-            <h3 className="text-white text-2xl font-bold mb-4">Our Solution</h3>
+            <h3 className="text-white text-2xl font-bold mb-4">
+              {t('services_card4_title')}
+            </h3>
             <p className="text-gray-300 text-lg mb-4 font-medium">
-              We deploy AI Solutions that deliver instant, reliable customer
-              interactions 24/7. Built on enterprise-grade architecture, our
-              solutions reduce support costs by up to 70% in the first month—no
-              downtime, no mistakes, no limits.
+              {t('services_card4_subtitle')}
             </p>
+            <div className="flex-grow">
+              <p className="text-gray-400 mb-8 leading-relaxed">
+                {t('services_card4_desc')}
+              </p>
+            </div>
             <ul className="text-purple-300 font-medium space-y-2 list-disc list-outside ml-5 mt-auto">
-              <li>AI-Powered Web Platforms</li>
-              <li>iOS & Android App Development</li>
-              <li>Integration with Existing Business Systems</li>
+              <li>{t('services_card4_point1')}</li>
+              <li>{t('services_card4_point2')}</li>
+              <li>{t('services_card4_point3')}</li>
             </ul>
           </div>
         </div>

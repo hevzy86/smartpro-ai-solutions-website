@@ -1,12 +1,15 @@
 "use client";
 
+import { useTranslation } from 'react-i18next';
+
 export default function TransformationShowcaseSection() {
+  const { t } = useTranslation('common');
   return (
     <section className="w-full flex justify-center items-center py-16 px-2">
       <div className="w-full max-w-4xl bg-[#181c2f] bg-opacity-95 rounded-2xl shadow-2xl p-8 md:p-12 border border-[#262a40] relative">
         {/* Title */}
         <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-12">
-          TRANSFORMATION <span className="text-green-400 drop-shadow-[0_2px_8px_rgba(34,197,94,0.7)]">SHOWCASE</span>
+          {t('showcase_title')}
         </h2>
         
         {/* VoiceScale AI Profile Card */}
@@ -37,30 +40,29 @@ export default function TransformationShowcaseSection() {
             {/* Stats and Capabilities */}
             <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-[#23253c] rounded-lg p-4 border border-[#2c314f]">
-                <h4 className="text-lg font-semibold text-white mb-2">Performance Stats</h4>
+                <h4 className="text-lg font-semibold text-white mb-2">{t('showcase_performance_stats')}</h4>
                 <ul className="space-y-2 text-sm text-gray-300">
-                  <li>• 95% Call Success Rate</li>
-                  <li>• 2.3s Average Response Time</li>
-                  <li>• 40% Conversion Rate</li>
-                  <li>• 99.9% Uptime</li>
+                  <li>• {t('showcase_stat1')}</li>
+                  <li>• {t('showcase_stat2')}</li>
+                  <li>• {t('showcase_stat3')}</li>
+                  <li>• {t('showcase_stat4')}</li>
                 </ul>
               </div>
               
               <div className="bg-[#23253c] rounded-lg p-4 border border-[#2c314f]">
-                <h4 className="text-lg font-semibold text-white mb-2">Capabilities</h4>
+                <h4 className="text-lg font-semibold text-white mb-2">{t('showcase_capabilities')}</h4>
                 <ul className="space-y-2 text-sm text-gray-300">
-                  <li>• Multi-language Support</li>
-                  <li>• CRM Integration</li>
-                  <li>• Real-time Analytics</li>
-                  <li>• Custom Voice Training</li>
+                  <li>• {t('showcase_cap1')}</li>
+                  <li>• {t('showcase_cap2')}</li>
+                  <li>• {t('showcase_cap3')}</li>
+                  <li>• {t('showcase_cap4')}</li>
                 </ul>
               </div>
               
               <div className="bg-[#23253c] rounded-lg p-4 border border-[#2c314f] md:col-span-2">
-                <h4 className="text-lg font-semibold text-white mb-2">Recent Achievement</h4>
+                <h4 className="text-lg font-semibold text-white mb-2">{t('showcase_recent_achievement')}</h4>
                 <p className="text-sm text-gray-300">
-                  &quot;Generated $2.4M in qualified leads for a SaaS client in Q4 2023, 
-                  with a 300% ROI compared to their previous human agent setup.&quot;
+                  {t('showcase_achievement_text')}
                 </p>
               </div>
             </div>
@@ -69,10 +71,10 @@ export default function TransformationShowcaseSection() {
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center">
             <button className="bg-gradient-to-r from-blue-500 via-purple-500 to-fuchsia-500 hover:from-fuchsia-500 hover:to-blue-500 text-white font-bold px-8 py-3 rounded-lg shadow-lg transition">
-              See Demo
+              {t('see_demo')}
             </button>
             <button className="border-2 border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white font-bold px-8 py-3 rounded-lg transition">
-              Get Custom Quote
+              {t('get_custom_quote')}
             </button>
           </div>
         </div>
