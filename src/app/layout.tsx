@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://smartproaisolutions.io"),
   title: "SmartPro AI Solutions — AI Voice & Digital Agents for Business Automation",
   description: "SmartPro AI Solutions: Voice and digital AI agents for business automation, cost reduction, and efficiency boost. Try a free demo!",
   openGraph: {

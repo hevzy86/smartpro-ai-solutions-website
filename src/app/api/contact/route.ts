@@ -13,6 +13,7 @@ export async function POST(req: NextRequest) {
     const smtpPort = process.env.SMTP_PORT ? Number(process.env.SMTP_PORT) : 465;
     const smtpUser = process.env.SMTP_USER;
     const smtpPass = process.env.SMTP_PASS;
+    const smtpSecure = smtpPort === 465;
 
     if (!smtpHost || !smtpPort || !smtpUser || !smtpPass) {
       return NextResponse.json({ error: "SMTP config missing" }, { status: 500 });
@@ -22,7 +23,7 @@ export async function POST(req: NextRequest) {
     const transporter = nodemailer.createTransport({
       host: smtpHost,
       port: smtpPort,
-      secure: true,
+      secure: smtpSecure, // 465 — secure, 587 — not secure
       auth: {
         user: smtpUser,
         pass: smtpPass,
