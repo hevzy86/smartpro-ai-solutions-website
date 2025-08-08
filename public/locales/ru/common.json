@@ -1,9 +1,10 @@
 {
-  "book_my_free_call": "Записаться на бесплатный звонок",
+  "book_my_free_call": "Бесплатный звонок",
   "welcome": "Добро пожаловать в SmartProAI Solutions!",
   "contact_us": "Связаться с нами",
   "services": "Наши услуги",
   "services_intro": "Узнайте, как наши AI-решения могут преобразить ваш бизнес.",
+  "on_top": "Наверх",
 
   "hero_title": "Преобразите свой бизнес с помощью AI-инноваций",
   "hero_desc_1": "AI-решения работают 24/7, не устают, не ошибаются и значительно сокращают ваши расходы на поддержку.",
@@ -104,7 +105,7 @@
   "showcase_cap4": "Обучение под ваш голос",
   "showcase_achievement_text": "\"Сгенерировано $2.4M лидов для SaaS-клиента за Q4 2023, ROI — 300% по сравнению с прежней командой.\"",
 
-  "floating_book_button": "Записаться на бесплатный звонок",
+  "floating_book_button": "Бесплатный звонок",
 
   "transformation_headline": "Трансформируйте бизнес с помощью <span class=\"bg-gradient-to-r from-blue-400 via-fuchsia-400 to-purple-400 bg-clip-text text-transparent\">AI-инноваций</span>",
   "transformation_left_title": "Smart <span class=\"font-extrabold\">Pro</span> Solutions",

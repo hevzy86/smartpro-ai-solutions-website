@@ -102,7 +102,7 @@ export default function FooterSection() {
               />
             </button>
           </div>
-          <nav className="flex gap-6 justify-center mt-2 sm:mt-0 order-2 sm:order-3 mr-0 sm:mr-32 lg:mr-40 xl:mr-52 2xl:mr-64">
+          <nav className="flex gap-6 justify-center whitespace-nowrap mt-2 sm:mt-0 order-2 sm:order-3 mr-0 sm:mr-32 lg:mr-40 xl:mr-52 2xl:mr-64">
             <a
               href="#prototypes-showcase"
               className="text-gray-300 hover:text-white hover:underline transition"
