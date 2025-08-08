@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-console.log("ENV TEST:", {
+// Логируем переменные окружения при каждом вызове API
+console.log("ENV at /api/contact:", {
   host: process.env.SMTP_HOST,
   port: process.env.SMTP_PORT,
   user: process.env.SMTP_USER,
-  pass: process.env.SMTP_PASS,
+  pass: !!process.env.SMTP_PASS, // не логируем пароль напрямую
 });
 
 export async function POST(req: NextRequest) {
