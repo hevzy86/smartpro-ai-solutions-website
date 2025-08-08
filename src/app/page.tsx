@@ -10,6 +10,7 @@ import PrototypeShowcaseSection from "./components/PrototypeShowcaseSection";
 import FAQSection from "./components/FAQSection";
 import FooterSection from "./components/FooterSection";
 import FloatingBookButton from "./components/FloatingBookButton";
+import FloatingLanguageSwitcher from "./components/FloatingLanguageSwitcher";
 
 export default function Home() {
   const openCalWidget = () => {
@@ -37,6 +38,7 @@ export default function Home() {
         <FAQSection />
         <FooterSection />
         <FloatingBookButton onClick={openCalWidget} />
+        <FloatingLanguageSwitcher />
       </div>
     </div>
   );
