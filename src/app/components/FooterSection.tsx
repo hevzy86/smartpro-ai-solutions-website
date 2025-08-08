@@ -32,6 +32,7 @@ export default function FooterSection() {
                 height={36}
                 className="hover:scale-110 transition-transform duration-200"
                 unoptimized
+                priority
               />
             </a>
             <a
@@ -47,6 +48,7 @@ export default function FooterSection() {
                 height={36}
                 className="hover:scale-110 transition-transform duration-200"
                 unoptimized
+                priority
               />
             </a>
             <a
@@ -62,6 +64,7 @@ export default function FooterSection() {
                 height={36}
                 className="hover:scale-110 transition-transform duration-200"
                 unoptimized
+                priority
               />
             </a>
             <a
@@ -77,6 +80,7 @@ export default function FooterSection() {
                 height={36}
                 className="hover:scale-110 transition-transform duration-200"
                 unoptimized
+                priority
               />
             </a>
             <button
@@ -92,6 +96,7 @@ export default function FooterSection() {
                 height={36}
                 className="hover:scale-110 transition-transform duration-200"
                 unoptimized
+                priority
               />
             </button>
           </div>
