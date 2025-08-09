@@ -5,8 +5,6 @@ import { useTranslation } from 'react-i18next';
 
 interface Prototype {
   id: string;
-  title: string;
-  description: string;
   image: string;
   secondaryImage?: string;
   images?: string[]; // For multiple images slideshow
@@ -318,12 +316,12 @@ export default function PrototypeShowcaseSection() {
                     ? "border-blue-500/50 scale-105 shadow-2xl shadow-blue-500/20"
                     : ""
                 }`}
-              onMouseEnter={() => prototype && handleMouseEnter(prototype)}
-              onMouseLeave={() => prototype && handleMouseLeave(prototype)}
+              onMouseEnter={() => prototype?.id && handleMouseEnter(prototype)}
+              onMouseLeave={() => prototype?.id && handleMouseLeave(prototype)}
               onTouchStart={(e) => {
                 if (isTouchDevice) {
                   e.stopPropagation();
-                  setTouchedPrototype(prototype.id || null);
+                  setTouchedPrototype(prototype.id ? prototype.id : null);
                 }
               }}
             >
@@ -335,8 +333,8 @@ export default function PrototypeShowcaseSection() {
                     {prototype.images && prototype.images.map && prototype.images.map((img, index) => (
                       <Image
                         key={index}
-                        src={img || ''}
-                        alt={`${t(`prototype_${prototype.id ? prototype.id : ''}_title`)} - ${index + 1}`}
+                        src={img ?? ''}
+                        alt={`${t(`prototype_${prototype.id ?? ''}_title`)} - ${index + 1}`}
                         fill
                         className={`object-cover transition-all duration-500 group-hover:scale-110 absolute inset-0 ${
                           prototype.id && index === (currentImageIndex[prototype.id] || 0) &&
@@ -371,8 +369,8 @@ export default function PrototypeShowcaseSection() {
                       }`}
                     />
                     <Image
-                      src={prototype.secondaryImage ? prototype.secondaryImage : ''}
-                      alt={`${t(`prototype_${prototype.id ? prototype.id : ''}_title`)} - Enhanced`}
+                      src={prototype.secondaryImage ?? ''}
+                      alt={`${t(`prototype_${prototype.id ?? ''}_title`)} - Enhanced`}
                       fill
                       className={`object-cover transition-all duration-500 opacity-0 group-hover:opacity-100 group-hover:scale-110 absolute inset-0 ${
                         touchedPrototype === prototype.id
@@ -385,7 +383,7 @@ export default function PrototypeShowcaseSection() {
                   // Single image layout
                   <Image
                     src={prototype.image}
-                    alt={t(`prototype_${prototype.id ? prototype.id : ''}_title`)}
+                    alt={t(`prototype_${prototype.id ?? ''}_title`)}
                     fill
                     className={`object-cover transition-transform duration-300 group-hover:scale-110 ${
                       touchedPrototype === prototype.id ? "scale-110" : ""
@@ -443,7 +441,7 @@ export default function PrototypeShowcaseSection() {
                     Watch Demo
                   </button>
                   <button
-                    onClick={() => setSelectedPrototype(prototype)}
+                    onClick={() => prototype?.id && setSelectedPrototype(prototype)}
                     className="px-4 py-2 border border-gray-600 hover:border-blue-500 text-gray-300 hover:text-white rounded-lg transition-all duration-300 text-sm"
                   >
                     Details
@@ -462,7 +460,7 @@ export default function PrototypeShowcaseSection() {
             <div className="p-6">
               <div className="flex justify-between items-start mb-4">
                 <h3 className="text-2xl font-bold text-white">
-                  {t(`prototype_${selectedPrototype.id}_title`)}
+                  {t(`prototype_${selectedPrototype?.id ?? ''}_title`)}
                 </h3>
                 <button
                   onClick={closeModal}
@@ -517,7 +515,7 @@ export default function PrototypeShowcaseSection() {
               </div>
 
               <p className="text-gray-300 mb-4">
-                {t(`prototype_${selectedPrototype.id}_desc`)}
+                {t(`prototype_${selectedPrototype?.id ?? ''}_desc`)}
               </p>
 
               <div className="flex flex-wrap gap-2 mb-6">
