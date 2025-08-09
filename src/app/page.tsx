@@ -1,4 +1,5 @@
 "use client";
+import { Suspense } from "react";
 import CalComScriptLoader from "./components/CalComScriptLoader";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
@@ -38,7 +39,9 @@ export default function Home() {
         <FAQSection />
         <FooterSection />
         <FloatingBookButton onClick={openCalWidget} />
-        <FloatingLanguageSwitcher />
+        <Suspense fallback={null}>
+          <FloatingLanguageSwitcher />
+        </Suspense>
       </div>
     </div>
   );
