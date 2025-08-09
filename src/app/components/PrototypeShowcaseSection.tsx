@@ -261,14 +261,14 @@ export default function PrototypeShowcaseSection() {
 
   const handleMouseEnter = (prototype: Partial<Prototype>) => {
     setHoveredPrototype(prototype.id || null);
-    if (prototype.images && prototype.images.length > 1) {
+    if (prototype.id && prototype.images && prototype.images.length > 1) {
       startSlideshow(prototype.id, prototype.images);
     }
   };
 
   const handleMouseLeave = (prototype: Partial<Prototype>) => {
     setHoveredPrototype(null);
-    if (prototype.images && prototype.images.length > 1) {
+    if (prototype.id && prototype.images && prototype.images.length > 1) {
       stopSlideshow(prototype.id);
     }
   };
@@ -333,7 +333,7 @@ export default function PrototypeShowcaseSection() {
                     {prototype.images && prototype.images.map && prototype.images.map((img, index) => (
                       <Image
                         key={index}
-                        src={img ?? ''}
+                        src={img || ''}
                         alt={`${t(`prototype_${prototype.id ?? ''}_title`)} - ${index + 1}`}
                         fill
                         className={`object-cover transition-all duration-500 group-hover:scale-110 absolute inset-0 ${
@@ -359,7 +359,7 @@ export default function PrototypeShowcaseSection() {
                   // Hover-switching image layout for SmartBite AI
                   <div className="relative h-full">
                     <Image
-                      src={prototype.image}
+                      src={prototype.image || ''}
                       alt={`${t(`prototype_${prototype.id ? prototype.id : ''}_title`)} - Main`}
                       fill
                       className={`object-cover transition-all duration-500 group-hover:opacity-0 group-hover:scale-110 ${
@@ -369,7 +369,7 @@ export default function PrototypeShowcaseSection() {
                       }`}
                     />
                     <Image
-                      src={prototype.secondaryImage ?? ''}
+                      src={prototype.secondaryImage || ''}
                       alt={`${t(`prototype_${prototype.id ?? ''}_title`)} - Enhanced`}
                       fill
                       className={`object-cover transition-all duration-500 opacity-0 group-hover:opacity-100 group-hover:scale-110 absolute inset-0 ${
@@ -382,7 +382,7 @@ export default function PrototypeShowcaseSection() {
                 ) : (
                   // Single image layout
                   <Image
-                    src={prototype.image}
+                    src={prototype.image || ''}
                     alt={t(`prototype_${prototype.id ?? ''}_title`)}
                     fill
                     className={`object-cover transition-transform duration-300 group-hover:scale-110 ${
@@ -488,7 +488,7 @@ export default function PrototypeShowcaseSection() {
                   <div className="flex h-full">
                     <div className="relative flex-1">
                       <Image
-                        src={selectedPrototype.image}
+                        src={selectedPrototype.image || ''}
                         alt={`${t(`prototype_${selectedPrototype && selectedPrototype.id ? selectedPrototype.id : ''}_title`)} - Main`}
                         fill
                         className="object-cover"
@@ -506,7 +506,7 @@ export default function PrototypeShowcaseSection() {
                 ) : (
                   // Single image layout in modal
                   <Image
-                    src={selectedPrototype.image}
+                    src={selectedPrototype.image || ''}
                     alt={t(`prototype_${selectedPrototype && selectedPrototype.id ? selectedPrototype.id : ''}_title`)}
                     fill
                     className="object-cover"
