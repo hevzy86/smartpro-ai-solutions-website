@@ -37,7 +37,7 @@
   "services_card3_point2": "Billing & approval workflows",
   "services_card3_point3": "Task and case management",
   "services_card3_point4": "AI-powered tools for internal processes and customer interaction",
-  "services_card4_title": "Our Solution",
+  "services_card4_title": "Custom AI Solutions",
   "services_card4_subtitle": "",
   "services_card4_desc": "We deploy AI Solutions that deliver instant, reliable customer interactions 24/7. Built on enterprise-grade architecture, our solutions reduce support costs by up to 70% in the first month—no downtime, no mistakes, no limits.",
   "services_card4_point1": "AI-Powered Web Platforms",
@@ -85,36 +85,36 @@
   "prototype_smart-bite_title_ru": "SmartBite AI",
   "prototype_smart-bite_desc_ru": "Приложение для питания с рекомендациями AI, планированием питания и оптимизацией целей",
 
-  "calculator_title": "HUMAN AGENTS <span class=\"text-green-400 drop-shadow-[0_2px_8px_rgba(34,197,94,0.7)]\">vs AI AGENTS</span>",
-  "select_project_type": "Select Project Type",
-  "project_call_center": "Call Center",
-  "project_sales": "Sales Outreach",
-  "project_support": "Customer Support",
-  "project_appointment": "Appointment Setting",
+  "calculator_title": "Estimate Your Savings with <span class=\"text-green-400 drop-shadow-[0_2px_8px_rgba(34,197,94,0.7)]\">AI Automation</span>",
+  "select_project_type": "Select Process Type",
+  "project_call_center": "Workflow Automation",
+  "project_sales": "Document/Data Processing",
+  "project_support": "Customer Support Automation",
+  "project_appointment": "Sales/Lead Automation",
   "project_custom": "Custom Project",
-  "input_human_cost": "Monthly Human Agent Cost ($)",
-  "input_dial_attempts": "Dial Attempts per Day",
-  "input_answer_rate": "Answer Rate (%)",
-  "input_call_duration": "Avg. Call Duration (min)",
+  "input_human_cost": "Monthly Human Labor Cost ($)",
+  "input_dial_attempts": "Tasks per Day",
+  "input_answer_rate": "Completion Rate (%)",
+  "input_call_duration": "Avg. Task Duration (min)",
   "input_working_days": "Working Days per Month",
   "calc_human_per_month": "per month",
   "calc_human_bullets": [
-    "Fixed monthly cost regardless of call volume",
+    "Fixed monthly cost regardless of task volume",
     "Limited scalability",
-    "Variable quality and script adherence",
+    "Variable quality and process adherence",
     "Human fatigue and turnover"
   ],
   "calc_ai_per_month": "per month",
   "calc_ai_bullets": [
-    "Pay only for actual talk time",
+    "Pay only for actual automated work",
     "Unlimited scaling capability",
-    "100% script consistency",
-    "24/7 availability with no fatigue"
+    "100% process consistency",
+    "24/7 availability, no fatigue"
   ],
   "calc_savings_absolute": "Absolute Savings",
   "calc_savings_percent": "Cost Reduction",
   "calc_annual_savings": "Annual Savings",
-  "calc_assumptions": "Calculation Assumptions:",
+  "calc_assumptions": "Calculation assumptions: This calculator provides only a rough estimate for typical business processes. Actual savings may vary depending on your specific case.",
   "calc_loading": "Loading calculator...",
 
   "showcase_title": "AI Transformation Showcase",
@@ -155,4 +155,3 @@
   "transformation_expertise3": "Business Automation",
   "transformation_expertise4": "AI Integration"
 }
-

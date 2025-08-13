@@ -70,7 +70,7 @@ export default function TransformationSection() {
             <div className="flex-1 bg-gradient-to-br from-[#21274a] to-[#181c2f] rounded-2xl shadow-lg p-8 flex flex-col items-center justify-center min-w-[260px]">
               <div className="mb-4 flex justify-center items-center">
                 <img
-                  src="/smartPro4.png"
+                  src="/icons/MyLogo.png"
                   alt="SmartPro AI Logo"
                   width={160}
                   height={160}

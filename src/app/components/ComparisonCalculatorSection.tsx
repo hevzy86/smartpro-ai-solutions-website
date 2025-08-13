@@ -9,49 +9,49 @@ export default function ComparisonCalculatorSection() {
 
   const projectTemplates = {
     'call-center': {
-      name: t('project_call_center'),
+      name: t('project_call_center'), // Workflow Automation
       humanCost: 2000,
-      dialAttempts: 250,
-      answerRate: 30,
-      callDuration: 2,
+      dialAttempts: 250, // tasks per day
+      answerRate: 90, // completion rate
+      callDuration: 5, // avg. task duration
       workingDays: 22,
-      aiCostPerMinute: 0.15
+      aiCostPerMinute: 0.10 // cost per automated minute
     },
     'sales': {
-      name: t('project_sales'),
+      name: t('project_sales'), // Document/Data Processing
       humanCost: 2500,
-      dialAttempts: 150,
-      answerRate: 25,
-      callDuration: 5,
+      dialAttempts: 180,
+      answerRate: 95,
+      callDuration: 3,
       workingDays: 22,
-      aiCostPerMinute: 0.20
+      aiCostPerMinute: 0.08
     },
     'support': {
-      name: t('project_support'),
+      name: t('project_support'), // Customer Support Automation
       humanCost: 1800,
-      dialAttempts: 100,
-      answerRate: 80,
-      callDuration: 8,
+      dialAttempts: 120,
+      answerRate: 85,
+      callDuration: 6,
       workingDays: 22,
       aiCostPerMinute: 0.12
     },
     'appointment': {
-      name: t('project_appointment'),
+      name: t('project_appointment'), // Sales/Lead Automation
       humanCost: 1500,
-      dialAttempts: 200,
-      answerRate: 35,
-      callDuration: 3,
+      dialAttempts: 100,
+      answerRate: 80,
+      callDuration: 10,
       workingDays: 22,
-      aiCostPerMinute: 0.18
+      aiCostPerMinute: 0.15
     },
     'custom': {
       name: t('project_custom'),
       humanCost: 2000,
-      dialAttempts: 250,
-      answerRate: 30,
-      callDuration: 2,
+      dialAttempts: 150,
+      answerRate: 90,
+      callDuration: 5,
       workingDays: 22,
-      aiCostPerMinute: 0.15
+      aiCostPerMinute: 0.10
     }
   };
 
@@ -184,20 +184,20 @@ export default function ComparisonCalculatorSection() {
 
         {/* Results Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          {/* Human Agent Card */}
+          {/* Human Labor Card */}
           <div className="bg-[#23253c] rounded-xl p-6 flex flex-col items-center border border-[#2c314f]">
             <div className="text-3xl font-bold text-red-400 mb-1">${results.humanTotal.toLocaleString()}</div>
-            <div className="text-gray-300 mb-2">per month</div>
+            <div className="text-gray-300 mb-2">{t('calc_human_per_month')}</div>
             <ul className="text-gray-400 text-sm list-disc list-inside space-y-1">
               {(t('calc_human_bullets', { returnObjects: true }) as string[]).map((item, idx) => (
               <li key={idx}>{item}</li>
             ))}
             </ul>
           </div>
-          {/* AI Agent Card */}
+          {/* AI Automation Card */}
           <div className="bg-[#23253c] rounded-xl p-6 flex flex-col items-center border border-[#2c314f]">
             <div className="text-3xl font-bold text-green-400 mb-1">${results.aiTotal.toLocaleString()}</div>
-            <div className="text-gray-300 mb-2">per month</div>
+            <div className="text-gray-300 mb-2">{t('calc_ai_per_month')}</div>
             <ul className="text-gray-400 text-sm list-disc list-inside space-y-1">
               {(t('calc_ai_bullets', { returnObjects: true }) as string[]).map((item, idx) => (
               <li key={idx}>{item}</li>
@@ -217,11 +217,10 @@ export default function ComparisonCalculatorSection() {
             {t('calc_assumptions')}
           </div>
           <div className="text-xs mt-2 opacity-80 space-y-1">
-            <div>• {dialAttempts.toLocaleString()} dial attempts per day ({(dialAttempts * workingDays).toLocaleString()} per month)</div>
-            <div>• {answerRate}% answer rate ({Math.round(dialAttempts * workingDays * (answerRate / 100)).toLocaleString()} answered calls per month)</div>
-            <div>• Average call duration: {callDuration} minutes</div>
-            <div>• Total AI minutes: {Math.round(dialAttempts * workingDays * (answerRate / 100) * callDuration).toLocaleString()} per month</div>
-            <div>• Working days: {workingDays} per month</div>
+            <div>• {dialAttempts.toLocaleString()} {t('input_dial_attempts').toLowerCase()} × {workingDays} {t('input_working_days').toLowerCase()} = {(dialAttempts * workingDays).toLocaleString()} / {t('input_working_days').toLowerCase()}</div>
+            <div>• {answerRate}% {t('input_answer_rate').toLowerCase()} = {Math.round(dialAttempts * workingDays * (answerRate / 100)).toLocaleString()} {t('input_dial_attempts').toLowerCase()} {t('input_answer_rate').toLowerCase()} / {t('input_working_days').toLowerCase()}</div>
+            <div>• {t('input_call_duration')}: {callDuration} min</div>
+            <div>• Total AI minutes: {Math.round(dialAttempts * workingDays * (answerRate / 100) * callDuration).toLocaleString()} / {t('input_working_days').toLowerCase()}</div>
           </div>
         </div>
       </div>

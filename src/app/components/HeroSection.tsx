@@ -27,11 +27,13 @@ export default function HeroSection() {
           minWidth: 200.0,
           scale: 1.0,
           scaleMobile: 1.0,
-          color: 0x3fffed,
+          color: 0x444466, // much less contrast
           backgroundColor: 0x23153c,
-          points: 10.0,
-          maxDistance: 22.0,
-          spacing: 18.0,
+          points: 4.0, // fewer points
+          maxDistance: 40.0, // more spread out
+          spacing: 35.0, // more spacing
+          showDots: false,
+          opacity: 0.18 // much lower opacity
         });
         setVantaEffect(effect);
       } else {

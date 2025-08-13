@@ -14,29 +14,67 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur border-b border-[#262a40]">
       <div className="max-w-7xl mx-auto px-4 sm:px-4 md:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo/Brand + Language Switcher */}
-          <div className="flex items-center gap-2 select-none">
+        <div className="relative flex items-center h-16 w-full">
+          {/* Desktop: Logo and Brand */}
+          <div className="hidden md:flex items-center gap-1 select-none">
             <img
-              src="/smartPro4.png"
+              src="/icons/MyLogo.png"
               alt="SmartPro AI Solutions Logo"
-              className="h-[54px] w-[100px] object-contain p-0 m-0"
+              className="h-[44px] w-[44px] object-contain p-0 m-0"
               style={{
                 background: "transparent",
-                aspectRatio: "100/54",
+                aspectRatio: "1/1",
                 padding: 0,
                 margin: 0,
                 objectFit: "contain",
               }}
               draggable="false"
             />
-            <span className="text-lg md:text-2xl font-bold text-white">
-              SmartPro <span className="font-extrabold">AI Solutions</span>
+            <span className="text-lg md:text-2xl font-extrabold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent" style={{lineHeight:'1.1'}}>
+              SmartPro AI Solutions
             </span>
           </div>
+          {/* Mobile: Logo, centered button, burger */}
+          <div className="flex items-center w-full md:hidden gap-x-2">
+            <div className="flex items-center gap-1 select-none flex-none">
+              <img
+                src="/icons/MyLogo.png"
+                alt="SmartPro AI Solutions Logo"
+                className="h-[44px] w-[44px] object-contain p-0 m-0"
+                style={{
+                  background: "transparent",
+                  aspectRatio: "1/1",
+                  padding: 0,
+                  margin: 0,
+                  objectFit: "contain",
+                }}
+                draggable="false"
+              />
+              <span className="text-lg font-extrabold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent" style={{lineHeight:'1.1'}}>
+                SmartPro AI Solutions
+              </span>
+            </div>
+            <div className="flex-1 flex justify-center">
+              <button
+                onClick={scrollToBooking}
+                className="bg-gradient-to-r from-blue-500 to-pink-500 text-white px-4 py-2 rounded-md font-semibold text-sm shadow-md hover:from-blue-600 hover:to-pink-600 transition-all duration-300 min-w-[110px]"
+                style={{maxWidth:'140px',whiteSpace:'nowrap'}}
+              >
+                Book Call
+              </button>
+            </div>
+            <button
+              className="md:hidden group flex flex-col justify-center items-center w-12 h-12 p-0 bg-transparent border-none focus:outline-none flex-none"
+              onClick={() => setMobileMenuOpen((v) => !v)}
+            >
+              <div className="w-9 h-1.5 mb-1 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300"></div>
+              <div className="w-9 h-1.5 mb-1 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300"></div>
+              <div className="w-9 h-1.5 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300"></div>
+            </button>
+          </div>
 
-          {/* Navigation Links */}
-          <nav className="hidden md:flex space-x-8">
+          {/* Center: Navigation */}
+          <nav className="hidden md:flex items-center space-x-8 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <a
               href="#"
               className="text-white hover:text-blue-400 transition-colors duration-200"
@@ -77,47 +115,28 @@ export default function Header() {
             </a>
           </nav>
 
-          {/* Book a Free Call Button */}
-          <button
-            onClick={scrollToBooking}
-            className="hidden md:block bg-gradient-to-r from-blue-500 to-pink-500 text-white px-8 py-3 rounded-lg font-semibold text-base hover:from-blue-600 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-          >
-            Book Your Free Strategy Call
-          </button>
-          {/* Mobile Book Call Button (hidden) */}
-          {/* <button
-            onClick={scrollToBooking}
-            className="md:hidden fixed top-20 right-4 z-40 w-[90vw] max-w-xs bg-gradient-to-r from-blue-500 to-pink-500 text-white px-6 py-3 rounded-lg font-semibold text-base shadow-lg"
-            style={{minWidth:'200px'}}
-          >
-            Book Your Free Strategy Call
-          </button> */}
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+          {/* Right: Book a Free Call Button */}
+          <div className="hidden md:flex items-center ml-auto">
             <button
-              className="group flex flex-col justify-center items-center w-12 h-12 p-0 bg-transparent border-none focus:outline-none"
-              onClick={() => setMobileMenuOpen((v) => !v)}
+              onClick={scrollToBooking}
+              className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white px-10 py-2 rounded-xl font-bold text-lg shadow-xl hover:from-blue-600 hover:to-pink-600 transition-all duration-300"
+              style={{minWidth:'260px', fontSize:'1.25rem', letterSpacing: '0.01em'}}
             >
-              <div className="w-9 h-1.5 mb-1 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300"></div>
-              <div className="w-9 h-1.5 mb-1 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300"></div>
-              <div className="w-9 h-1.5 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300"></div>
+              Book Your Free Strategy Call
             </button>
-            {mobileMenuOpen && (
-              <div className="absolute top-16 right-4 bg-[#23253c] rounded-xl shadow-lg p-6 flex flex-col gap-4 z-50 w-[80vw] max-w-xs">
+          </div>
+          {mobileMenuOpen && (
+            <div className="fixed top-16 left-0 right-0 bg-black/80 backdrop-blur border-b border-[#262a40] p-4 md:hidden z-50">
+              <nav className="flex flex-col space-y-4">
                 <a
                   href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                    setMobileMenuOpen(false);
-                  }}
+                  onClick={() => setMobileMenuOpen(false)}
                   className="text-white hover:text-blue-400"
                 >
                   On Top
                 </a>
                 <a
-                  href="#services"
+                  href="#prototypes-showcase"
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-white hover:text-blue-400"
                 >
@@ -142,9 +161,9 @@ export default function Header() {
                 >
                   FAQ
                 </a>
-              </div>
-            )}
-          </div>
+              </nav>
+            </div>
+          )}
         </div>
       </div>
     </header>
