@@ -92,6 +92,9 @@ export default function BookingSection() {
       `}</style>
       
       <section id="book-call" className="w-full">
+        <h2 className="mt-12 text-3xl md:text-4xl font-extrabold text-yellow-300 text-center mb-8">
+          Book a Free Consultation
+        </h2>
         <div 
           id="my-cal-inline" 
           style={{
