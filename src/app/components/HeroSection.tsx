@@ -1,9 +1,9 @@
 import { useRef, useEffect, useState } from "react";
 import Script from "next/script";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export default function HeroSection() {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
   const vantaRef = useRef<HTMLDivElement>(null);
   const [vantaEffect, setVantaEffect] = useState<ReturnType<
     typeof window.VANTA.NET
@@ -33,7 +33,7 @@ export default function HeroSection() {
           maxDistance: 40.0, // more spread out
           spacing: 35.0, // more spacing
           showDots: false,
-          opacity: 0.18 // much lower opacity
+          opacity: 0.18, // much lower opacity
         });
         setVantaEffect(effect);
       } else {
@@ -72,30 +72,22 @@ export default function HeroSection() {
       <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
         {/* New Headline & Subheadline */}
         {/* New Headline & Subheadline */}
-        <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-center mb-6 leading-tight">
-          {t('hero_title')}
-        </h1>
-        <div className="text-lg sm:text-2xl text-center max-w-2xl mb-8 text-gray-200 flex flex-col gap-2">
-          <div className="text-lg sm:text-2xl text-center max-w-2xl mb-8 text-gray-200 flex flex-col gap-2">
-  <span>
-    {t('hero_desc_2_part1')}
-    <span className="text-yellow-300 font-bold drop-shadow-[0_2px_8px_rgba(250,204,21,0.7)]">{t('hero_desc_2_24_7')}</span>
-    {t('hero_desc_2_part2')}
-    <br />
-    {t('hero_desc_2_part3')}
-    <span className="text-green-400 font-bold">{t('hero_desc_2_support')}</span>.
-  </span>
-  <span>
-    {t('hero_desc_3_part1')}
-    <span className="text-purple-400 font-bold">{t('hero_desc_3_tasks')}</span>
-    {t('hero_desc_3_part2')}
-  </span>
-  <span className="text-cyan-400 font-bold">
-    {t('hero_desc_4')}
-  </span>
-</div>
-          
+        <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-center mb-6 leading-tight" dangerouslySetInnerHTML={{ __html: t("hero_title") }} />
+        <div className="text-lg sm:text-2xl text-center max-w-2xl mb-8 text-gray-200">
+          <span dangerouslySetInnerHTML={{ __html: t("hero_desc") }} />
         </div>
+        <button
+          onClick={() => {
+            const bookingSection = document.getElementById("book-call");
+            if (bookingSection) {
+              bookingSection.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
+          className="w-full mt-6 px-6 py-4 rounded-2xl bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-white text-2xl md:text-3xl font-extrabold shadow-lg hover:from-blue-500 hover:to-pink-500 transition-all duration-300 max-w-xl mx-auto"
+          style={{ whiteSpace: "normal" }}
+        >
+          {t("book_my_free_call")}
+        </button>
       </div>
     </section>
   );

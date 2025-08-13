@@ -16,20 +16,26 @@ export default function TransformationSection() {
       if (
         typeof window !== "undefined" &&
         window.VANTA &&
-        window.VANTA.GLOBE &&
+        window.VANTA.NET &&
         vantaRef.current
       ) {
         if (vantaEffect) vantaEffect.destroy();
-        const effect = window.VANTA.GLOBE({
+        const effect = window.VANTA.NET({
           el: "#vanta-transformation",
-          mouseControls: true,
-          touchControls: true,
+          mouseControls: false,
+          touchControls: false,
           gyroControls: false,
           minHeight: 200.0,
           minWidth: 200.0,
           scale: 1.0,
           scaleMobile: 1.0,
-          color: 0xdd3fff,
+          color: 0x23243a, // even darker color for less contrast
+          backgroundColor: 0x23153c,
+          points: 2.0, // minimum points
+          maxDistance: 80.0, // much more spread out
+          spacing: 60.0, // much more spacing
+          showDots: false,
+          opacity: 0.08, // very low opacity
         });
         setVantaEffect(effect);
       } else {
@@ -50,7 +56,7 @@ export default function TransformationSection() {
         strategy="beforeInteractive"
       />
       <Script
-        src="/vanta.globe.min.js"
+        src="/vanta.net.min.js"
         strategy="beforeInteractive"
       />
       <section className="w-full py-20 px-2 bg-gradient-to-br from-[#181032] via-[#1a0a2f] to-[#0f1020] flex justify-center relative overflow-hidden">

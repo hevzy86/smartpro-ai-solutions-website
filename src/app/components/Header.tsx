@@ -74,6 +74,7 @@ export default function Header() {
             <span className="text-lg md:text-2xl font-extrabold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent whitespace-nowrap" style={{lineHeight:'1.1'}}>
               SmartPro AI Solutions
             </span>
+      
           </div>
 
           {/* Center: Navigation */}
