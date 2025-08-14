@@ -17,7 +17,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur border-b border-[#262a40]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-4 md:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-2 sm:px-2 md:px-6 lg:px-8">
         <div className="relative flex items-center h-16 w-full">
           {/* Mobile: logo+brand, button, burger in one row */}
           <div className="flex items-center w-full md:hidden gap-x-2 justify-between">
@@ -35,7 +35,7 @@ export default function Header() {
                 }}
                 draggable="false"
               />
-              <span className="text-base font-extrabold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent whitespace-nowrap" style={{lineHeight:'1.1'}}>
+              <span className="text-sm sm:text-base font-extrabold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent whitespace-nowrap" style={{lineHeight:'1.1'}}>
                 SmartPro AI Solutions
               </span>
             </div>
