@@ -147,7 +147,7 @@ export default function TransformationSection() {
           </div>
           {/* Expertise Areas */}
           <div className="w-full mt-4">
-            <div className="bg-gradient-to-br from-[#21274a] to-[#181c2f] rounded-2xl p-6 flex flex-row flex-nowrap justify-center items-center space-x-12 shadow-lg">
+            <div className="bg-gradient-to-br from-[#21274a] to-[#181c2f] rounded-2xl p-6 flex flex-col sm:flex-row flex-wrap justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 md:space-x-12 shadow-lg">
               <div className="flex-1 flex items-center gap-2 justify-center">
                 <span className="inline-block w-3 h-3 rounded-full bg-purple-400 shrink-0"></span>
                 <span className="text-white font-medium whitespace-nowrap">
