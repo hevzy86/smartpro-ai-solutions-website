@@ -76,18 +76,6 @@ export default function HeroSection() {
         <div className="text-lg sm:text-2xl text-center max-w-2xl mb-8 text-gray-200">
           <span dangerouslySetInnerHTML={{ __html: t("hero_desc") }} />
         </div>
-        <button
-          onClick={() => {
-            const bookingSection = document.getElementById("book-call");
-            if (bookingSection) {
-              bookingSection.scrollIntoView({ behavior: "smooth" });
-            }
-          }}
-          className="w-full mt-6 px-6 py-4 rounded-2xl bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-white text-2xl md:text-3xl font-extrabold shadow-lg hover:from-blue-500 hover:to-pink-500 transition-all duration-300 max-w-xl mx-auto"
-          style={{ whiteSpace: "normal" }}
-        >
-          {t("book_my_free_call")}
-        </button>
       </div>
     </section>
   );
