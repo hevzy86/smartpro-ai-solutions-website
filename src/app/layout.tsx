@@ -108,19 +108,15 @@ export default function RootLayout({
   label.textContent = 'Ask AI anything';
   document.body.appendChild(label);
 
-  var foundBtn = null;
+  // Toggle label+deco when user clicks the nextbot widget area (bottom-right 160px)
   var isOpen = false;
-
-  function updateVisibility() {
-    if (!foundBtn) return;
-    var rect = foundBtn.getBoundingClientRect();
-    var expanded = rect.height > 120;
-    if (expanded !== isOpen) {
-      isOpen = expanded;
-      deco.style.opacity = expanded ? '0' : '1';
-      label.style.opacity = expanded ? '0' : '1';
+  document.addEventListener('click', function(e) {
+    if (e.clientX > window.innerWidth - 160 && e.clientY > window.innerHeight - 160) {
+      isOpen = !isOpen;
+      deco.style.opacity = isOpen ? '0' : '1';
+      label.style.opacity = isOpen ? '0' : '1';
     }
-  }
+  }, true);
 
   var attempts = 0;
   var interval = setInterval(function() {
@@ -135,9 +131,6 @@ export default function RootLayout({
         foundBtn = el;
         el.style.transform = 'scale(1.35)';
         el.style.transformOrigin = 'center center';
-        if (window.ResizeObserver) {
-          new ResizeObserver(updateVisibility).observe(el);
-        }
         clearInterval(interval);
         break;
       }
