@@ -37,7 +37,6 @@ export const metadata: Metadata = {
 };
 
 import { I18nProvider } from "./i18n-provider";
-import SmartProChatButton from "./components/SmartProChatButton";
 
 export default function RootLayout({
   children,
@@ -52,7 +51,6 @@ export default function RootLayout({
         <I18nProvider>
           {children}
         </I18nProvider>
-        <SmartProChatButton />
         <Script
           id="nextbot-chat-widget"
           strategy="afterInteractive"
