@@ -52,6 +52,54 @@ export default function RootLayout({
           {children}
         </I18nProvider>
         <Script
+          id="nextbot-pulse-decoration"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function() {
+  var style = document.createElement('style');
+  style.textContent = \`
+    @keyframes sp-pulse {
+      0% { transform: scale(1); opacity: 0.5; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+    #sp-chat-deco { position: fixed; bottom: 30px; right: 30px; width: 56px; height: 56px; z-index: 999998; pointer-events: none; }
+    #sp-chat-deco::before, #sp-chat-deco::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: #1a73e8;
+      animation: sp-pulse 2s ease-out infinite;
+    }
+    #sp-chat-deco::after { animation-delay: 1s; }
+    #sp-chat-label {
+      position: fixed;
+      bottom: 14px;
+      right: 18px;
+      z-index: 999998;
+      pointer-events: none;
+      font-size: 10px;
+      font-weight: 600;
+      color: #fff;
+      background: rgba(26,115,232,0.85);
+      border-radius: 999px;
+      padding: 2px 8px;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+  \`;
+  document.head.appendChild(style);
+  var deco = document.createElement('div');
+  deco.id = 'sp-chat-deco';
+  document.body.appendChild(deco);
+  var label = document.createElement('div');
+  label.id = 'sp-chat-label';
+  label.textContent = 'Talk to AI';
+  document.body.appendChild(label);
+})();`
+          }}
+        />
+        <Script
           id="nextbot-chat-widget"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
