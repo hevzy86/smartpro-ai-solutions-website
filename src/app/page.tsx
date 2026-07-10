@@ -10,20 +10,9 @@ import ComparisonCalculatorSection from "./components/ComparisonCalculatorSectio
 import PrototypeShowcaseSection from "./components/PrototypeShowcaseSection";
 import FAQSection from "./components/FAQSection";
 import FooterSection from "./components/FooterSection";
-import FloatingBookButton from "./components/FloatingBookButton";
 import FloatingLanguageSwitcher from "./components/FloatingLanguageSwitcher";
 
 export default function Home() {
-  const openCalWidget = () => {
-    // Scroll to the booking section
-    const bookingSection = document.getElementById("book-call");
-    if (bookingSection) {
-      bookingSection.scrollIntoView({ behavior: "smooth" });
-    } else {
-      // Fallback: scroll to top
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  };
 
   return (
     <div className="font-sans min-h-screen flex flex-col bg-gradient-to-br from-[#0f1020] via-[#18123a] to-[#1a0a2f] text-white">
@@ -38,7 +27,6 @@ export default function Home() {
         <BookingSection />
         <FAQSection />
         <FooterSection />
-        <FloatingBookButton onClick={openCalWidget} />
         <Suspense fallback={null}>
           <FloatingLanguageSwitcher />
         </Suspense>
