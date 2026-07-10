@@ -60,62 +60,71 @@ export default function RootLayout({
   style.textContent = \`
     @keyframes sp-pulse {
       0% { transform: scale(1); opacity: 0.5; }
-      100% { transform: scale(2.2); opacity: 0; }
+      100% { transform: scale(2.4); opacity: 0; }
     }
-    #sp-chat-deco { position: fixed; bottom: 30px; right: 30px; width: 56px; height: 56px; z-index: 999998; pointer-events: none; }
+    #sp-chat-deco {
+      position: fixed; bottom: 30px; right: 30px;
+      width: 56px; height: 56px;
+      z-index: 999998; pointer-events: none;
+      transition: opacity 0.25s;
+    }
     #sp-chat-deco::before, #sp-chat-deco::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      background: #1a73e8;
+      content: ''; position: absolute; inset: 0;
+      border-radius: 50%; background: #1a73e8;
       animation: sp-pulse 2s ease-out infinite;
     }
     #sp-chat-deco::after { animation-delay: 1s; }
     #sp-chat-label {
-      position: fixed;
-      bottom: 118px;
-      right: 10px;
-      z-index: 999998;
-      pointer-events: none;
-      font-size: 12px;
-      font-weight: 700;
-      color: #fff;
+      position: fixed; bottom: 118px; right: 10px;
+      z-index: 999998; pointer-events: none;
+      font-size: 12px; font-weight: 700; color: #fff;
       background: linear-gradient(135deg, #1a73e8 0%, #6c3fc5 100%);
-      border-radius: 12px;
-      padding: 7px 14px;
-      letter-spacing: 0.02em;
-      white-space: nowrap;
+      border-radius: 12px; padding: 7px 14px;
+      letter-spacing: 0.02em; white-space: nowrap;
       box-shadow: 0 4px 16px rgba(26,115,232,0.45);
       animation: sp-label-pulse 2.5s ease-in-out infinite;
+      transition: opacity 0.25s;
     }
     @keyframes sp-label-pulse {
       0%, 100% { box-shadow: 0 4px 16px rgba(26,115,232,0.45); }
       50% { box-shadow: 0 4px 24px rgba(108,63,197,0.7); }
     }
     #sp-chat-label::after {
-      content: '';
-      position: absolute;
-      bottom: -7px;
-      right: 22px;
+      content: ''; position: absolute;
+      bottom: -7px; right: 22px;
       border-left: 7px solid transparent;
       border-right: 7px solid transparent;
       border-top: 7px solid #6c3fc5;
     }
   \`;
   document.head.appendChild(style);
+
   var deco = document.createElement('div');
   deco.id = 'sp-chat-deco';
   document.body.appendChild(deco);
+
   var label = document.createElement('div');
   label.id = 'sp-chat-label';
   label.textContent = 'Ask AI anything';
   document.body.appendChild(label);
 
-  // Scale up the nextbot button after it loads
-  var scaleAttempts = 0;
-  var scaleInterval = setInterval(function() {
-    scaleAttempts++;
+  var foundBtn = null;
+  var isOpen = false;
+
+  function updateVisibility() {
+    if (!foundBtn) return;
+    var rect = foundBtn.getBoundingClientRect();
+    var expanded = rect.height > 120;
+    if (expanded !== isOpen) {
+      isOpen = expanded;
+      deco.style.opacity = expanded ? '0' : '1';
+      label.style.opacity = expanded ? '0' : '1';
+    }
+  }
+
+  var attempts = 0;
+  var interval = setInterval(function() {
+    attempts++;
     var all = document.querySelectorAll('*');
     for (var i = 0; i < all.length; i++) {
       var el = all[i];
@@ -123,13 +132,17 @@ export default function RootLayout({
       if (cs.position !== 'fixed') continue;
       var rect = el.getBoundingClientRect();
       if (rect.right > window.innerWidth * 0.6 && rect.bottom > window.innerHeight * 0.6 && rect.width > 20 && rect.width < 150) {
+        foundBtn = el;
         el.style.transform = 'scale(1.35)';
-        el.style.transformOrigin = 'bottom right';
-        clearInterval(scaleInterval);
+        el.style.transformOrigin = 'center center';
+        if (window.ResizeObserver) {
+          new ResizeObserver(updateVisibility).observe(el);
+        }
+        clearInterval(interval);
         break;
       }
     }
-    if (scaleAttempts > 20) clearInterval(scaleInterval);
+    if (attempts > 20) clearInterval(interval);
   }, 500);
 })();`
           }}
