@@ -96,6 +96,26 @@ export default function RootLayout({
   label.id = 'sp-chat-label';
   label.textContent = 'Talk to AI';
   document.body.appendChild(label);
+
+  // Scale up the nextbot button after it loads
+  var scaleAttempts = 0;
+  var scaleInterval = setInterval(function() {
+    scaleAttempts++;
+    var all = document.querySelectorAll('*');
+    for (var i = 0; i < all.length; i++) {
+      var el = all[i];
+      var cs = window.getComputedStyle(el);
+      if (cs.position !== 'fixed') continue;
+      var rect = el.getBoundingClientRect();
+      if (rect.right > window.innerWidth * 0.6 && rect.bottom > window.innerHeight * 0.6 && rect.width > 20 && rect.width < 150) {
+        el.style.transform = 'scale(1.35)';
+        el.style.transformOrigin = 'bottom right';
+        clearInterval(scaleInterval);
+        break;
+      }
+    }
+    if (scaleAttempts > 20) clearInterval(scaleInterval);
+  }, 500);
 })();`
           }}
         />
