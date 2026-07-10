@@ -37,6 +37,7 @@ export const metadata: Metadata = {
 };
 
 import { I18nProvider } from "./i18n-provider";
+import SmartProChatButton from "./components/SmartProChatButton";
 
 export default function RootLayout({
   children,
@@ -51,6 +52,7 @@ export default function RootLayout({
         <I18nProvider>
           {children}
         </I18nProvider>
+        <SmartProChatButton />
         <Script
           id="nextbot-chat-widget"
           strategy="afterInteractive"
@@ -64,8 +66,8 @@ export default function RootLayout({
       agentId: "88d0985c-c7e4-4e19-9cca-0a344c422861",
       server: "https://app.nextbot.ru",
       chatIconNumberSvg: "1",
-      chatIconLineColor: "#fff",
-      chatIconBackgroundColor: "#1a73e8",
+      chatIconLineColor: "transparent",
+      chatIconBackgroundColor: "transparent",
       secondsToAutoinvite: "0",
       messageAutoInvite: "Hi, you can ask me a question",
       bgColorAutoInvite: "#9ecceb",
