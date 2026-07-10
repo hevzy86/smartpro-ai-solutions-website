@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -50,6 +51,36 @@ export default function RootLayout({
         <I18nProvider>
           {children}
         </I18nProvider>
+        <Script
+          id="nextbot-chat-widget"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function () {
+  const s = document.createElement("script");
+  s.src = "https://app.nextbot.ru/chat-widget-bundle-ver3.js";
+  s.async = true;
+  s.onload = function () {
+    initializeChatWidget({
+      agentId: "88d0985c-c7e4-4e19-9cca-0a344c422861",
+      server: "https://app.nextbot.ru",
+      chatIconNumberSvg: "1",
+      chatIconLineColor: "#fff",
+      chatIconBackgroundColor: "#1a73e8",
+      secondsToAutoinvite: "0",
+      messageAutoInvite: "Hi, you can ask me a question",
+      bgColorAutoInvite: "#9ecceb",
+      textColorAutoInvite: "#000000",
+      widgetBottom: "30",
+      widgetRight: "30",
+    });
+  };
+  s.onerror = function () {
+    console.error("Не удалось загрузить chat-widget-bundle-ver3.js");
+  };
+  document.head.appendChild(s);
+})();`,
+          }}
+        />
       </body>
     </html>
   );
