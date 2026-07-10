@@ -12,7 +12,7 @@
     "@calcom/atoms": "^1.1.1-debug-dont-use",
     "@calcom/embed-react": "^1.5.3",
     "i18next": "^23.16.8",
-    "next": "15.4.4",
+    "next": "15.5.20",
     "next-i18next": "^14.0.3",
     "nodemailer": "^7.0.5",
     "react": "19.1.0",
