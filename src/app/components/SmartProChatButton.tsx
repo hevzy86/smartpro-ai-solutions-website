@@ -1,47 +1,65 @@
 "use client"
-import { useRef, useCallback } from 'react'
+import { useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
 
 export default function SmartProChatButton() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const nextbotBtnRef = useRef<HTMLElement | null>(null)
+
+  useEffect(() => {
+    let found = false
+
+    const tryFind = () => {
+      if (found) return
+      // Collect all fixed-position elements in the bottom-right quadrant
+      const all = Array.from(document.querySelectorAll<HTMLElement>('*'))
+      for (const el of all) {
+        const cs = window.getComputedStyle(el)
+        if (cs.position !== 'fixed') continue
+        const rect = el.getBoundingClientRect()
+        // Bottom-right quadrant, small element (widget button ~40-80px)
+        if (
+          rect.right > window.innerWidth * 0.5 &&
+          rect.bottom > window.innerHeight * 0.5 &&
+          rect.width > 20 && rect.width < 200 &&
+          rect.height > 20 && rect.height < 200
+        ) {
+          // Skip our own button
+          if (containerRef.current && (containerRef.current === el || containerRef.current.contains(el))) continue
+          nextbotBtnRef.current = el
+          el.style.opacity = '0'
+          el.style.pointerEvents = 'none'
+          found = true
+          break
+        }
+      }
+    }
+
+    const observer = new MutationObserver(() => tryFind())
+    observer.observe(document.body, { childList: true, subtree: true })
+
+    // Also try on interval in case widget loads after mutations settle
+    const interval = setInterval(() => {
+      if (found) { clearInterval(interval); return }
+      tryFind()
+    }, 500)
+    setTimeout(() => clearInterval(interval), 10000)
+
+    return () => {
+      observer.disconnect()
+      clearInterval(interval)
+    }
+  }, [])
 
   const handleClick = useCallback(() => {
-    const container = containerRef.current
-    if (!container) return
-
-    container.style.display = 'none'
-
-    requestAnimationFrame(() => {
-      // nextbot button is at bottom:30px right:30px, ~56px diameter → center ~58px from edge
-      const points: [number, number][] = [
-        [window.innerWidth - 58, window.innerHeight - 58],
-        [window.innerWidth - 45, window.innerHeight - 45],
-        [window.innerWidth - 70, window.innerHeight - 70],
-        [window.innerWidth - 35, window.innerHeight - 35],
-      ]
-
-      for (const [x, y] of points) {
-        const el = document.elementFromPoint(x, y) as HTMLElement | null
-        if (!el || el === document.body || el === document.documentElement) continue
-
-        let target: HTMLElement | null = el
-        while (target && target !== document.body) {
-          const tag = target.tagName.toLowerCase()
-          const role = target.getAttribute('role')
-          const cs = window.getComputedStyle(target)
-          if (tag === 'button' || role === 'button' || cs.cursor === 'pointer') {
-            target.click()
-            break
-          }
-          target = target.parentElement
-        }
-        break
-      }
-
+    const btn = nextbotBtnRef.current
+    if (btn) {
+      btn.style.pointerEvents = 'auto'
+      btn.click()
       setTimeout(() => {
-        if (container) container.style.display = ''
-      }, 250)
-    })
+        if (nextbotBtnRef.current) nextbotBtnRef.current.style.pointerEvents = 'none'
+      }, 300)
+    }
   }, [])
 
   return (
