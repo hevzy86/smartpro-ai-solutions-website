@@ -74,18 +74,33 @@ export default function RootLayout({
     #sp-chat-deco::after { animation-delay: 1s; }
     #sp-chat-label {
       position: fixed;
-      bottom: 14px;
-      right: 18px;
+      bottom: 118px;
+      right: 10px;
       z-index: 999998;
       pointer-events: none;
-      font-size: 10px;
-      font-weight: 600;
+      font-size: 12px;
+      font-weight: 700;
       color: #fff;
-      background: rgba(26,115,232,0.85);
-      border-radius: 999px;
-      padding: 2px 8px;
-      letter-spacing: 0.03em;
+      background: linear-gradient(135deg, #1a73e8 0%, #6c3fc5 100%);
+      border-radius: 12px;
+      padding: 7px 14px;
+      letter-spacing: 0.02em;
       white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(26,115,232,0.45);
+      animation: sp-label-pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes sp-label-pulse {
+      0%, 100% { box-shadow: 0 4px 16px rgba(26,115,232,0.45); }
+      50% { box-shadow: 0 4px 24px rgba(108,63,197,0.7); }
+    }
+    #sp-chat-label::after {
+      content: '';
+      position: absolute;
+      bottom: -7px;
+      right: 22px;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-top: 7px solid #6c3fc5;
     }
   \`;
   document.head.appendChild(style);
@@ -94,7 +109,7 @@ export default function RootLayout({
   document.body.appendChild(deco);
   var label = document.createElement('div');
   label.id = 'sp-chat-label';
-  label.textContent = 'Talk to AI';
+  label.textContent = 'Ask AI anything';
   document.body.appendChild(label);
 
   // Scale up the nextbot button after it loads
