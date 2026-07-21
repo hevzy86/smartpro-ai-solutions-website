@@ -1,11 +1,12 @@
 {
   "book_my_free_call": "Book my Free Call",
+  "hero_see_in_action": "See it in action",
   "welcome": "Welcome to SmartProAI Solutions!",
   "contact_us": "Contact Us",
   "services_intro": "Discover how our AI-powered solutions can transform your business.",
 
-  "hero_title": "Let <span class=\"text-blue-400 font-bold\">AI</span> Take Care of <span class=\"text-purple-400 font-bold\">Everything</span>",
-  "hero_desc": "<span class=\"text-green-400 font-bold\">Lower costs</span>, <span class=\"text-blue-400 font-bold\">save time</span>, and experience <span class=\"text-fuchsia-400 font-bold\">life-changing efficiency</span>.",
+  "hero_title": "Never miss another <span class=\"text-blue-400 font-bold\">{{noun}}</span> again.",
+  "hero_desc": "Your AI answers every call, text &amp; chat — <span class=\"text-green-400 font-bold\">24/7</span>. Books the job while your team works.",
   "services": "Our Services",
   "services_card1_title": "AI-Powered Voice Agents",
   "services_card1_subtitle": "Get a 24/7 AI receptionist for your business.",

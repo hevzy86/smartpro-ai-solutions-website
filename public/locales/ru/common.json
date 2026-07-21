@@ -1,5 +1,6 @@
 {
   "book_my_free_call": "Бесплатный звонок",
+  "hero_see_in_action": "Посмотреть в действии",
   "welcome": "Добро пожаловать в SmartProAI Solutions!",
   "contact_us": "Связаться с нами",
   "services": "Наши услуги",
@@ -19,7 +20,8 @@
   "prototype_ai-persona-baby-podcast_title": "AI Persona-Baby Podcast",
   "prototype_ai-persona-baby-podcast_desc": "Революционная AI-платформа для подкастов, превращающая любого человека в персонализированного ведущего и распространяющая контент по всем соцсетям с единой панели управления",
 
-  "hero_title": "Преобразите свой бизнес с помощью AI-инноваций",
+  "hero_title": "Больше ни одного пропущенного <span class=\"text-blue-400 font-bold\">{{noun}}</span>.",
+  "hero_desc": "Ваш AI отвечает на каждый звонок, сообщение и чат — <span class=\"text-green-400 font-bold\">24/7</span>. Записывает клиента, пока команда работает.",
   "hero_desc_1": "AI-решения работают 24/7, не устают, не ошибаются и значительно сокращают ваши расходы на поддержку.",
   "hero_desc_2_part1": "AI-решения работают ",
   "hero_desc_2_24_7": "24/7",
