@@ -124,9 +124,9 @@ export default function Header() {
             <button
               onClick={scrollToBooking}
               className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white px-10 py-2 rounded-xl font-bold text-lg shadow-xl hover:from-blue-600 hover:to-pink-600 transition-all duration-300"
-              style={{minWidth:'260px', fontSize:'1.25rem', letterSpacing: '0.01em'}}
+              style={{minWidth:'210px', fontSize:'1.25rem', letterSpacing: '0.01em'}}
             >
-              Book Your Free Strategy Call
+              Book my Free Call
             </button>
           </div>
           {mobileMenuOpen && (

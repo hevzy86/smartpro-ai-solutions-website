@@ -7,6 +7,12 @@
 
   "hero_title": "Never miss another <span class=\"text-blue-400 font-bold\">{{noun}}</span> again.",
   "hero_desc": "Your AI answers every call, text &amp; chat — <span class=\"text-green-400 font-bold\">24/7</span>. Books the job while your team works.",
+  "results_heading": "Every missed call is a job going to <span class=\"text-fuchsia-400 font-bold\">your competitor</span>",
+  "results_sub": "Here's what unanswered calls really cost — and what changes when AI picks up every single time.",
+  "results_stat1_label": "Lost per month from just 2 missed calls a day at $500 a job",
+  "results_stat2_label": "Every call, text & chat answered — nights, weekends, holidays",
+  "results_stat3_label": "Average response time, so leads get answered before they move on",
+  "results_stat4_label": "Typical drop in missed calls once SmartPro is handling them",
   "services": "Our Services",
   "services_card1_title": "AI-Powered Voice Agents",
   "services_card1_subtitle": "Get a 24/7 AI receptionist for your business.",
